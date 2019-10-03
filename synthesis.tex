@@ -1,21 +1,8 @@
 \chapter{Synthesis}
 \label{synthesis}
-
-%% Start the actual chapter on a new page.
 \newpage
 
-% De Intro en Synthese hoeven van mij geen lange verhalen te zijn, maar moeten het werk dat in 
-% de hoofdstukken staat in de wetenschappelijke context plaatsen. Hier moeten dus de praktische 
-% vragen worden gesteld:  
-% wat we hier dan mee kunnen (Synthese). .... Je kunt ook aangeven welke opties in 
-% BEAST2 nog niet zijn geimplementeerd (en waarom), daarbij in wat meer detail aangevend wat 
-% die opties inhouden (bijv. partities, *BEAST).
-
-
-
-
-
-\section{Today}
+\section{Past}
 
 \noindent
 
@@ -45,118 +32,113 @@ still make an error in constructing our dated phylogeny: due
 to chance, the resulting DNA alignment may have 
 too less or too much mutations in certain places.
 
-This brings us to the main question of this thesis:
-'How well can we construct a phylogeny from an alignment?'
-Or, what is the error we make in constructing a phylogeny?
- 
-demonstrates the error we make in 
-inferring our phylogenies, for two speciation models.
-However, there are many more speciation models.
+This brings us to the bigger question underlying this thesis:
+How well can we construct a phylogeny from an alignment?
+With theoretical studies, in which we have complete knowledge,
+we can measure the error in the phylogenies constructed.
 
-thesis resulted in four articles,
-of which two are methodological and two are illustrations
-of applying it. 
+One thing we do not know, is what is the true phylogetic model
+in nature. A phylogenetic model is a combination of models that each
+highlights a part of the process. In this thesis I focus
+on the speciation model, of which, we do not know what is the
+true speciation model in nature.
 
-What can we do with it?
+Due to this, there are many speciation models, each
+incorporating a facet of the speciation process. When we have to
+pick a defensible speciation model, we are usually pragmatic and
+pick a model that is incorporated within our phygenetic
+tools. There are cases, however, in which we could worry that these
+standard models may be overly simplistic, because they overlook a 
+facet of speciation that may be very convincing in some cases.
 
+In this thesis, me and Giovanni Laudanno, created a tool to
+measure the error we make in inferring a phylogeny, due to
+picking the wrong speciation model. 
+With this novel tool, called \verb;pirouette; (chapter 3),
+the field of phylogenetics now has a method, 
+with which we demonstrate if and when the standard speciation models
+are justifiably good.
 
-Take, for examples the genus of \textit{setophaga}.
-Figure \ref{fig:setophaga} shows a phylogeny is 
-Taking a closer look at the number of lineages through time,
-we can see that this number increases less and less through time.
+There are two speciation models that are (yet) non-standard.
+The first speciation model, 
+unlike the standard speciation models, 
+allows speciation to co-occur.
+When there is a scenario in nature, in which a process triggers speciation
+in multiple species, this multiple-birth death (MBD) model would be the better fit. 
+In chapter 4, Giovanni Laudanno and me 
+use \verb;pirouette; to 
+measure the error we make, 
+when we use a standard speciation model on a process we know (read: simulated) 
+to follow the MBD process.
+From that we found that ...
 
-\begin{figure}[H]
+The second non-standard speciation model,
+unlike the standard speciation models,
+assumes that speciation takes time,
+which is encorporated in the protracted-birth death (PBD) model
+In chapter 5, I 
+use \verb;pirouette; to 
+measure the error we make, when we use a standard speciation
+model on a process we know to follow the PBD process.
+From that we found that ...
 
+\section{Open questions and future work}
 
-  \includegraphics[width=0.3\textwidth]{setophaga.png}
-  \includegraphics[width=0.3\textwidth]{rabosky_lovette_2008_setophaga_phylogeny.png}
-  \includegraphics[width=0.3\textwidth]{etienne_et_al_2011_fig_3_a.png}
-  \caption{
-    A \textit{setophaga somethingus} of the genus \textit{setophaga}.
-    A \textit{setophaga} phylogeny, from Rakosky and Lovette (2008).
-    The number of \textit{setophaga} species through time, adapted from Etienne et al 2011
-  }
-  \label{fig:setophaga}
-\end{figure}
+Now we can measure the errors we make in our phylogentic
+inference, when using a standard phylogentic model on a
+true process following a non-standard model. 
+\verb;pirouette; can serve as a litmus test 
+to measure the relevance of a novel tree prior. 
 
+Of course, there are already ways to estimate the relevance of a
+novel speciation model. A straighforward one, is to add the speciation
+model to the set of standard models, after which its inference is
+compared with the standard models. A drawback of this approach, is
+that it is harder to develop: not only need the novel speciation model
+be able to simulate its phylogenies, also a likelihood equation is needed
+to allow it to be used by the phylogenetic tools. Developing such a
+likelihood equation may be harder than using \verb;pirouette;.
 
+The step forward of \verb;pirouette; is that it allows 
+to quantify the error we make in our phylogentic inference, by
+expressing it as (usually) two distributions: one with the baseline errors,
+one with the added error caused by using an incorrect phylogenetic model.
+What is missing in \verb;pirouette;, is a clear-cut interpretation of these 
+error distributions, that is, a clear yes/no answer to the question: 'Is
+using the standard phylogenetic models good enough?'. Only when the two
+distributions overlap, can we confidently claim a yes. 
 
+There have been defensible, yet arbitrary, choices made in the pipeline
+of \verb;pirouette;. For example, a twin alignment has as much
+mutations acculated from the root sequence, as the true alignment. 
+This design choice should assure the Bayesian inference in the next step
+to work on an equal amount of genetic information. Unknown is if this
+indeed improves the judgements made by \verb;pirouette;. These choices
+should one day be parameters of using \verb;pirouette; as well.
 
-\subsection{Chapter 2: \texttt{babette}}
+We apply the \verb;pirouette; methodology in chapter 4 and 5.
+We show that the error in a Bayesian inference on
+phylogenies increases when the effects of co-occuring 
+or protracted speciation are stronger. 
+This qualitative conclusion is obvious, 
+but the extent of these errors has never been quantified before.
+An obvious follow-up question is, 
+what are examples in nature where we expect a high 
+abundance of co-occurring or protracted speciation, 
+and thus, what is the
+error empiricist make?
 
-Chapter 2 shows the flexibility of \verb;babette;, where this whole thesis
-shows its robustness: all the following chapters use \verb;babette; to
-do Bayesian inference in a scripted way. Also, \verb;babette; has passed
-the stringent code peer-review by rOpenSci, which is another indicator of 
-its quality.
-
-Nevertheless, there is one trait of recognition of \verb;babette; missing:
-it has zero citations up until now, when excluding the articles in this 
-thesis. We think the reason for it is that \verb;babette; is
-not on CRAN yet. There are multiple reasons why this is the case:
-First, \verb;babette; consists out of five packages. Three out of these
-five packages have a dependency on the others. Therefore, the packages can
-be submitted in sequence only. Second, \verb;babette; has remained in active 
-development since its conception. There was a prioritization of 
-fixing a known bug and adding a vital new feature over 
-pushing \verb;babette; to CRAN and hurting users. Third, \verb;babette;
-only supports a certain percentage of BEAST2 use cases, which are the
-use cases needed for this thesis. 
-
-So although \verb;babette; is still underappreciated, it has only gotten
-better before it will get the attention it deserves. 
-For example, after the publication of its article, 
-a feature has been added to run \verb;babette; in parallel
-jobs on the Groningen computer cluster, paving the way for heavy-duty 
-usage. Without this new feature, chapters 4 and 5 would have been
-impossible to complete.
-
-\subsection{Chapter 3: \texttt{pirouette}}
-
-Chapter 3 shows the usage of \verb;pirouette;, a tool to measure the
-impact/relevance of a novel tree prior. \verb;pirouette; is flexible and
-robust enough to be used in the next two chapters. Also, when averaging
-out the stochasticity, \verb;pirouette; works as expected, successfully
-quantifying the impact that a novel tree prior has.
-
-\verb;pirouette; provides a good first step to determine 
-if a novel tree prior is relevant in a Bayesian analysis:
-instead of following intuition, \verb;pirouette; expresses 
-the added value of a new tree prior in numbers. The second step,
-however, is still missing: a clear-cut interpretation of these numbers.
-
- * How often are new tree priors created?
- * Isn't it easier to write the new tree prior in BEAST2 to assess its
-   relevance?
- * Pipeline is complex:
-   * Effect of alignment's site and clock model
-   * Effect of error function: nLTT, or gamma statistic or 
- * Quantification still has to interpretated
-
- * pirouette only uses an alignment and discards other data
-
-\subsection{Chapter 4: \texttt{razzo}}
-
-Chapter 4 shows the error in a Bayesian inference on
-phylogenies in which speciation co-occurs, when using standard
-tree priors that do not allow for co-occuring speciation.
-Me and my co-author quantify the errors made under a wide range
-of parameter settings. The more frequent to co-occurance of speciation,
-[it is expected] the larger the error. 
-[it is yet unknown if that error is big compared to the background noise]
-
- * More fine-grained parameter space, but why?
-
-\subsection{Chapter 5: \texttt{raket}}
-
-Chapter 5 shows the error in a Bayesian inference on
-phylogenies in which speciation takes time, when using standard
-tree priors that do not allow for speciation taking time.
-I quantify the errors made under a wide range
-of parameter settings. The longer speciation takes, [it is expected] the larger the error. 
-[it is yet unknown if that error is big compared to the background noise]
-The effect of sampling a representative incipient species to create
-a species tree are [expected to be] small.
+Disregarding the results of chapters 3 and 4, there are
+at least two reasons to add the MBD and PBD tree models to the standard
+phylogentic models anyway. The first reason is methodological: perhaps
+the \verb;pirouette; setup gave rise to an inrepresentative conclusion.
+Using the actual tree prior in inference and comparing its performance
+to the standard ones, is still the most straightforward way to determine,
+ironically, if the novel tree prior adds value as a standard tree prior.
+The second reason to add a novel tree prior the standard models, is
+because of the model parameters that are estimated jointly with the
+phylogenies. The clearest example is the PBD model, which allows one
+to estimate biologically relevant parameters such as the duration of speciation.
 
 This thesis gives the field of phylogenetics tools and examples of
 how to quantify the effect of a tree prior on Bayesian inference.
@@ -164,29 +146,6 @@ It will help research find the border between when speciation models are
 simple enough, yet not too simple. As all articles within this thesis,
 this thesis itself and all its source code is free (as in freedom),
 there is little in the way of this research contributing to the field. 
-
-% Het hoofdstuk conclusion is meer een synthese of discussie. Een
-% outlook naar de toekomst. Hier kun je ook ideeen kwijt die niet in de
-% hoofdstukken terecht zijn gekomen.
-
-\section{Future}
-
- * Improve babette
- * Apply pirouette to standard models
-   * Measure effect of n taxa
-   * Measure effect of DNA sequence length
-   * Measure effect of stochasticity in alignment
-   * Measure effect of absolute nLTT statistic: squared nLTT, 
-     log-transformed nLTT, delta R 
-   * Measure effect of more candidates
-   * Effect of using the MRCA prior
-   * Interpretation of error distributions 
- * Measure impact of MBD prior differently, by adding it to BEAST2
-   anyways, then do an MCMC that switch models
- * Measure impact of PBD prior differently, by adding it to BEAST2
-   anyways, then do an MCMC that switch models
-
-
 
 \references{conclusion}
 
