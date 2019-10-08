@@ -9,14 +9,25 @@
 \dropcap{T}{his} thesis started with two very basic biological 
 questions. The first question is to ask which species are closest related to
 one another. This can be answered satifactorily 
-nowadys using DNA sequences: the taxa of 
-which the DNA sequences is most similar, are closest related.
+nowadays using DNA sequences: the taxa of
+which the DNA sequences is most similar, are closest related
+\footnote{
+  Even this simple rule-of-thumb has a hidden assumption:
+  the mutation rate should be low enough to preserve genetic information,
+  instead of scrambling all nucleotides.
+}.
+Already for decades, biologists have created multiple phylogenetic tools 
+that allow the user to construct such an 
+undated (that is, without an indicator of time) 
+phylogeny from a DNA alignment.
+A novel such tool that I developed is \verb;babette; (chapter 2), 
+which allows to do a Bayesian phylogenetic inference from R,
+resulting in a distribution of undated (but also possibly dated) phylogenies.
 
-The second very basic biological question, is to 
-ask \emph{when} these speciation events took place.
-This thesis shows \verb;babette; (chapter 2), a tool that allows
-to create a dated phylogeny from DNA sequences.
 
+The second basic biological question, is to 
+ask \emph{when} these speciation events took place,
+so that we can get an idea of which species (co-)existed when.
 Constructing \emph{a} dated phylogeny from a DNA alignment 
 using \emph{a} tool is easy.
 It is harder to get a reasonably accurate dated phylogeny,
@@ -27,7 +38,7 @@ chapter 3), one can do a model
 comparison, which concludes which inference model is best picked
 on an alignment. 
 
-Even would we know the model that nature indeed follows, we
+Even would we know the model underlying a phylogeny, we
 still make an error in constructing our dated phylogeny: due
 to chance, the resulting DNA alignment may have 
 too less or too much mutations in certain places.
@@ -37,10 +48,42 @@ How well can we construct a phylogeny from an alignment?
 With theoretical studies, in which we have complete knowledge,
 we can measure the error in the phylogenies constructed.
 
-One thing we do not know, is what is the true phylogetic model
-in nature. A phylogenetic model is a combination of models that each
-highlights a part of the process. In this thesis I focus
-on the speciation model, of which, we do not know what is the
+In nature, there is a bigger problem: 
+we do not know, which phylogetic model it follows.
+Instead, we incorporate different parts
+of the phylogenetic process in different models, 
+each of which may not apply or be relevant in different circumstances.
+
+For example, we can either assume that each species has the same
+mutation rate, or that each species has
+its own unique mutation rate.
+It seems to be the more cautious approach to
+assume each species has a unique mutation rate: 
+if all these unique mutations rates are close, we fall back
+to the other model.
+And, indeed, there is evidence from nature that we should 
+assume a different mutation rate per species [A General Comparison of Relaxed Molecular Clock Models. Thomas Lepage,*David Bryant,Herve ́ Philippe,àand Nicolas Lartillot].
+An open question is, however, how these mutation rates are distributed.
+However, for phylogenies that go back little in time (hence
+have few mutations) and have little rate variation,
+we are better off assuming a mutation rate that is the same in each
+species [Rate variation and estimation of divergence times using strict and relaxed clocks, Richard P Brown & Ziheng Yang],
+as our estimates will have higher certainty.
+
+The part of a phylogenetic model I focussed on in this thesis,
+is the speciation model. The speciation model encorporates
+a phylogeny's branching pattern. 
+For example, we can either assume that through time,
+each species has the same probability to speciate, 
+or that each species has
+its own unique speciation rate.
+It seems to be the more cautious approach to
+assume each species has a unique speciation rate: 
+if all these unique speciation rates are close, we fall back
+to the other model.
+
+
+Also here, we do not know what is the
 true speciation model in nature.
 
 Due to this, there are many speciation models, each
