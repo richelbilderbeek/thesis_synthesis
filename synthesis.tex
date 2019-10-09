@@ -49,7 +49,7 @@ With theoretical studies, in which we have complete knowledge,
 we can measure the error in the phylogenies constructed.
 
 In nature, there is a bigger problem: 
-we do not know, which phylogetic model it follows.
+we do not know, which phylogenetic model it follows.
 Instead, we incorporate different parts
 of the phylogenetic process in different models, 
 each of which may not apply or be relevant in different circumstances.
@@ -94,13 +94,20 @@ tools. There are cases, however, in which we could worry that these
 standard models may be overly simplistic, because they overlook a 
 facet of speciation that may be very convincing in some cases.
 
-In this thesis, me and Giovanni Laudanno, created a tool to
-measure the error we make in inferring a phylogeny, due to
+In this thesis, I describe a tool I created together with Giovanni Laudanno, 
+to measure the error we make in inferring a phylogeny, due to
 picking the wrong speciation model. 
 With this novel tool, called \verb;pirouette; (chapter 3),
 the field of phylogenetics now has a method, 
 with which we demonstrate if and when the standard speciation models
-are justifiably good.
+are justifiably good. 
+
+I define 'standard speciation model' as the speciation models 
+present in the phylogenetic tool BEAST2, which are the Yule and
+Birth-Death model. The Yule model assumes no extinction
+and a constant speciation rate, where the Birth-Death model
+assumes a constant speciation and extinction rate. As
+it is 
 
 There are two speciation models that are (yet) non-standard.
 The first speciation model, 
