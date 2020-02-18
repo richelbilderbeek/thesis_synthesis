@@ -6,95 +6,34 @@
 
 \noindent
 
-\dropcap{T}{his} thesis started with two very basic biological 
-questions. The first question is to ask which species are closest related to
-one another. This can be answered satifactorily 
-nowadays using DNA sequences: the taxa of
-which the DNA sequences is most similar, are closest related
-\footnote{
-  Even this simple rule-of-thumb has a hidden assumption:
-  the mutation rate should be low enough to preserve genetic information,
-  instead of scrambling all nucleotides.
-}.
-Already for decades, biologists have created multiple phylogenetic tools 
-that allow the user to construct such an 
-undated (that is, without an indicator of time) 
-phylogeny from a DNA alignment.
-A novel such tool that I developed is \verb;babette; (chapter 2), 
-which allows to do a Bayesian phylogenetic inference from R,
-resulting in a distribution of undated (but also possibly dated) phylogenies.
+\dropcap{T}{he} goal of the research projects
+described in this thesis 
+was to measure the error we make in today's phylogenetic inference.
+In the end, I must conclude that the foundation to do so, is firmly 
+put in place, reasonably well investigated and paves the way for
+more biological example.
+
+To il
 
 
-The second basic biological question, is to 
-ask \emph{when} these speciation events took place,
-so that we can get an idea of which species (co-)existed when.
-Constructing \emph{a} dated phylogeny from a DNA alignment 
-using \emph{a} tool is easy.
-It is harder to get a reasonably accurate dated phylogeny,
-because one needs to make a defendable pick from the many combinations of 
-models. To make a defendable pick, however, we can sometimes use
-a rational procedure. With \verb;mcbette; (a component of \verb;pirouette;,
-chapter 3), one can do a model
-comparison, which concludes which inference model is best picked
-on an alignment. 
-
-Even would we know the model underlying a phylogeny, we
-still make an error in constructing our dated phylogeny: due
-to chance, the resulting DNA alignment may have 
-too less or too much mutations in certain places.
-
-This brings us to the bigger question underlying this thesis:
-How well can we construct a phylogeny from an alignment?
-With theoretical studies, in which we have complete knowledge,
-we can measure the error in the phylogenies constructed.
-
-In nature, there is a bigger problem: 
-we do not know, which phylogenetic model it follows.
-Instead, we incorporate different parts
-of the phylogenetic process in different models, 
-each of which may not apply or be relevant in different circumstances.
-
-For example, we can either assume that each species has the same
-mutation rate, or that each species has
-its own unique mutation rate.
-It seems to be the more cautious approach to
-assume each species has a unique mutation rate: 
-if all these unique mutations rates are close, we fall back
-to the other model.
-And, indeed, there is evidence from nature that we should 
-assume a different mutation rate per species [A General Comparison of Relaxed Molecular Clock Models. Thomas Lepage,*David Bryant,Herve ́ Philippe,àand Nicolas Lartillot].
-An open question is, however, how these mutation rates are distributed.
-However, for phylogenies that go back little in time (hence
-have few mutations) and have little rate variation,
-we are better off assuming a mutation rate that is the same in each
-species [Rate variation and estimation of divergence times using strict and relaxed clocks, Richard P Brown & Ziheng Yang],
-as our estimates will have higher certainty.
-
-The part of a phylogenetic model I focussed on in this thesis,
-is the speciation model. The speciation model encorporates
-a phylogeny's branching pattern. 
-For example, we can either assume that through time,
-each species has the same probability to speciate, 
-or that each species has
-its own unique speciation rate.
-It seems to be the more cautious approach to
-assume each species has a unique speciation rate: 
-if all these unique speciation rates are close, we fall back
-to the other model.
 
 
-Also here, we do not know what is the
-true speciation model in nature.
 
-Due to this, there are many speciation models, each
-incorporating a facet of the speciation process. When we have to
-pick a defensible speciation model, we are usually pragmatic and
-pick a model that is incorporated within our phygenetic
-tools. There are cases, however, in which we could worry that these
-standard models may be overly simplistic, because they overlook a 
-facet of speciation that may be very convincing in some cases.
 
-In this thesis, I describe a tool I created together with Giovanni Laudanno, 
+
+
+
+
+
+
+ 
+
+\dropcap{T}{his} thesis answers a facet of the question 
+
+
+'What is the error we make in inferring a phylogeny
+
+describes a tool I created together with Giovanni Laudanno, 
 to measure the error we make in inferring a phylogeny, due to
 picking the wrong speciation model. 
 With this novel tool, called \verb;pirouette; (chapter 3),
@@ -197,5 +136,5 @@ simple enough, yet not too simple. As all articles within this thesis,
 this thesis itself and all its source code is free (as in freedom),
 there is little in the way of this research contributing to the field. 
 
-\references{conclusion}
+\references{synthesis}
 
