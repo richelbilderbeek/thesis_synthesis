@@ -2,27 +2,30 @@
 
 project_names <- c(
   "aureole",
+  "babette",
+  paste0("babette_example_", seq(1, 9)),
+  "babetter",
   "beautier",
-  "daisieme",
-  "tracerer",
+  "becosys",
   "beastier",
+  "DAISIE",
+  "daisieme",
+  "DDD",
+  "mcbette",
   "mauricer",
   "mbd",
+  "nLTT",
+  "nodeSub",
+  "PBD",
+  "peregrine",
+  "pirouette",
+  paste0("pirouette_example_", seq(1, 30)),
   "raztr",
   "raztr",
   "raket",
-  "babette",
-  "babetter",
-  "mcbette",
-  "pirouette",
   "razzo",
-  "nLTT",
-  "nodeSub",
-  "DAISIE",
-  "becosys",
   "ribir",
-  paste0("babette_example_", seq(1, 9)),
-  paste0("pirouette_example_", seq(1, 30))
+  "tracerer"
 )
 
 project_names <- sort(project_names)
