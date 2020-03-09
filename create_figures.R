@@ -1,22 +1,15 @@
 # List the SLOC of all my projects
-
-project_names <- c(
+richel_project_names <- c(
   "aureole",
   "babette",
   paste0("babette_example_", seq(1, 9)),
   "babetter",
+  "beastier",
   "beautier",
   "becosys",
-  "beastier",
-  "DAISIE",
   "daisieme",
-  "DDD",
   "mcbette",
   "mauricer",
-  "mbd",
-  "nLTT",
-  "nodeSub",
-  "PBD",
   "peregrine",
   "pirouette",
   paste0("pirouette_example_", seq(1, 30)),
@@ -28,12 +21,29 @@ project_names <- c(
   "tracerer"
 )
 
+
+project_names <- c(
+  richel_project_names,
+  "beast2",
+  "DAISIE",
+  "DDD",
+  "mbd",
+  "nLTT",
+  "nodeSub",
+  "PBD",
+  "phangorn"
+)
+
 project_names <- sort(project_names)
 
+# Count non-whitespace lines
 count_lines <- function(filenames) {
   sum <- 0
   for (filename in filenames) {
-    sum <- sum + length(readLines(con = filename, warn = FALSE))
+    text <- readLines(con = filename, warn = FALSE)
+    text <- stringr::str_trim(text)
+    text <- text[ text != ""]
+    sum <- sum + length(text)
   }
   sum
 }
@@ -48,7 +58,7 @@ collect_r_filenames <- function(project_name) {
   )
   all_r_filenames <- stringr::str_match(
     string =  all_filenames,
-    pattern = "^.*\\.(R|Rmd)$"
+    pattern = "^.*\\.(R|Rmd|java|cpp|h)$"
   )
   all_r_filenames <- as.character(na.omit(all_r_filenames[,1]))
   filenames <- all_r_filenames[
@@ -73,6 +83,9 @@ for (i in seq_along(project_names)) {
 
 
 total_sloccount <- sum(df$sloccount)
+
+richels_sloccount <- sum(df[df$name %in% richel_project_names, ]$sloccount)
+
 
 # aggregate pirouette examples
 df <- rbind(
@@ -123,9 +136,10 @@ ggplot(
 # Horizontal bar
 ggplot(
   data = df,
-  aes(x = name, y = sloccount, fill = name)
+  aes(x = name, y = sloccount / 1000, fill = name)
 ) + geom_col(position = "identity", color = "black") + coord_flip() +
   theme(legend.position="none") +
+  scale_y_continuous(name ="SLOCcount (x1000)", breaks = seq(0, 150, 10)) +
   ggsave("~/sloccount.png", width = 7, height = 7)
 
 
@@ -140,3 +154,16 @@ ggplot2::ggplot(
   aes(x = "", y = sloccount, fill = name)
 ) + facet_grid(. ~ name) +
   geom_bar(stat = "identity", color = "black") + geom_text(aes(label = name))
+
+
+
+
+
+
+# GET /repos/:owner/:repo/stargazers
+#x <- curl::curl_fetch_memory("https://github.com?GET=repos/:ropensci/:beautier/stargazers")
+# curl::curl(
+#   url = "https://github.com",
+#   handle = "GET /repos/:ropensci/:beautier/stargazers"
+# )
+

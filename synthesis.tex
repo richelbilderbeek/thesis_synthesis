@@ -6,10 +6,152 @@
 
 \noindent
 
+## Summary
+
+This thesis can be summarized in one sentence:
+we've developed the tools to measure the
+error we make in phylogenetic inference and
+applied it on one non-standard speciation model.
+Within this chapter, I will put this into perspective.
+I will first take a look at the most basic thing produced,
+which is the software underlying the research,
+as this is the easiest to describe objectively. 
+From this rather plain foundation, I will move on 
+to the way the actual research is done and ending
+with the implications for the field of biology.
+
+### Software
+
+A simple way to quantify the amount of work
+is to count the lines of code and compare with related
+software. In figure \ref{fig:sloccount} I show the number of
+(non-empty) lines of code for the packages I developed, the packages
+I maintain, the packages I contributed to, as well as BEAST2.
+BEAST2, which is the foundation of the work in this thesis, 
+has the most lines of code, above 110k. After that comes
+'beautier' (27k lines), phangorn (18k), 'pirouette' (17k), 'daisieme' (13k), 
+DAISIE (12k) and 'razzo' (8k). 
+'beautier' is an R package that creates a BEAST2 
+input file, and part of the 'babette' package suite, as described
+in chapter 2. 
+'phangorn' is a general phylogentics package of which I fixed some bugs.
+'pirouette' is the package described in chapter 3. 
+'daisieme' is part of a project that did not reach fruition (see below).
+DAISIE is an R package developed in our group, with 42 citations on
+Google scholar. 'razzo' is the package described in chapter 4.
+Summing up the packages of which I wrote most of the code, results
+in 90k lines of code. This number of lines is still less than 
+BEAST2 (with 110k), except all written in half the time. Also note that
+BEAST2 has 26 collaborators, of which 6 contributed more than 1k lines of code.
+
+\begin{figure}[H]
+  \includegraphics[width=0.8\textwidth]{sloccount.png}
+  \caption{
+    SLOCcount 
+  }
+  \label{fig:sloccount}
+\end{figure}
+
+### Quality
+
+Judging code by the number lines of code is simple, but this is irrelevant 
+to estimate the quality of the software.
+Here I will highlight some indirect evidence of software quality,
+for the software listed in figure \ref{fig:sloccount}.
+To start with, all software in figure \ref{fig:sloccount} uses a
+continuous integration (CI) service, which is known to significantly 
+increase the number of bugs exposed (\cite{vasilescu2015}) and increases
+the speed at which new features are added (\cite{vasilescu2015}).
+A CI service is automatically activated when a developer puts a new version of
+his/her software online. The CI service will create a virtual computer from
+scratch, build the software and run it. These virtual computers can
+be of multiple operating systems. 
+Where BEAST2 and DAISIE are tested on Linux only, 'beautier',
+'pirouette' and my other R packages are tested to run under MacOS and
+Windows as well, assuring users of the three major operating systems
+can actually run these.
+
+A simple metric to get an idea of code quality is the code coverage.
+Code coverage correlates with code quality (\cite{horgan1994,del1995correlation}). 
+The code coverage is the percentage of lines
+that is actually executed by tests. 
+Writing tests is fundamental for writing quality code.
+These tests are usually run by the CI, each time a developer puts a new version
+online. Ideally all lines of code are tested. 
+My software has a 100\% code coverage, compared to BEAST2, with an 
+unknown/undisclosed code coverage, 'phangorn' with approximately
+70\%, followed by DAISIE with approximately 60\%.
+
+Another measure to improve code quality is peer review. Similar to
+academic manuscripts, also code can be peer reviewed. 
+For R code, rOpenSci is the non-profit organisation that does so.
+Note that a prerequisite for a code review by rOpenSci is that code coverage is 100\%,
+therefore 'phangorn' and 'DAISIE' are not yet eligible.
+The five packages of the 'babette' package suite have been reviewed, 
+where 'mcbette' is under review. 
+The full process of the review of 'babette' took approximately one year,
+as this is done in the free time of both me and the reviewers.
+Mostly due to this, there has not been time yet to have 'pirouette' reviewed.
+
+### Relevance
+
+The relevance of software is another facet: one may write big pieces
+of software of high quality, but if nobody uses it, the work is 
+still irrelevant.
+
+One way to estimate the relevance is to measure the number of CRAN downloads
+per month. CRAN is a central repository for R packages, which keeps
+track of the number of downloads. By this measure, in March 20202,
+'phangorn' is most relevant, with 15k downloads per months, followed 
+by 'beautier' (922), 'tracerer' (829) and DAISIE (740). Because BEAST2
+is not an R package, it is absent from this list.
+
+Another way to estimate the relevance is to measure the number of stars
+given on GitHub. GitHub is a website that hosts source code
+and that allows to develop software collaboratively.
+Logged-in users (there are 40 million) can give a star to a project
+to indicate his/her appreciation of the project.
+Going through the projects in \ref{fig:sloccount}, most stars
+are given to BEAST2: 134 (at 2020-03-09), followed
+by 'phangorn' with 110 and 'babette' with 20 stars,
+after which 'pirouette' and DAISIE follow with 3 stars.
+For repositories with 3 or less stars, these stars are given by
+the developers themselves and thus less relevant to indicate
+the relevance of a project.
+
+An academic way to estimate the relevance of a piece of software,
+is to count the number of citations the article describing it
+has received. As of 2020-03-09 these are from Google Scholar:
+BEAST2 3010, 
+
+
+
+
+
+
+
+
+Judging code by its quality
+metrics 
+
+ * lines of code
+ * quality
+ * relevance
+
+
+
+ * tool development: babette
+ * high quality
+ * care for user
+ * 
+
+
+
+
 ## Goal 
 
 The goal of the research projects
-described in this thesis 
+described in this thesis
 was to measure the error we make in today's phylogenetic inference.
 In the end, I must conclude that the foundation to do so, is firmly 
 put in place, reasonably well investigated and paves the way for
@@ -155,7 +297,13 @@ there is little in the way of this research contributing to the field.
 \references{synthesis}
 
 
-RSE: De synthese is duidelijk nog niet af, dus daar zal ik niet veel over zeggen, behalve dat er nog in staat dat je pirouette ook op PBD hebt toegepast. Als dat niet in je proefschrift komt, moet je dat natuurlijk aanpassen. Mocht je echter pilotruns hebben gedaan, dan kun je die wel in de synthese of in een apart hoofdstuk kwijt. Dat geldt ook voor het werk aan daisieme dat je ism studenten hebt gedaan. Maar dat heeft geen hoge prioriteit.
+RSE: De synthese is duidelijk nog niet af, dus daar zal ik niet veel over zeggen, 
+behalve dat er nog in staat dat je pirouette ook op PBD hebt toegepast. 
+Als dat niet in je proefschrift komt, moet je dat natuurlijk aanpassen. 
+Mocht je echter pilotruns hebben gedaan, 
+dan kun je die wel in de synthese of in een apart hoofdstuk kwijt. 
+Dat geldt ook voor het werk aan daisieme dat je ism studenten hebt gedaan. 
+Maar dat heeft geen hoge prioriteit.
 
 Het zou ook goed zijn als je aangeeft wat precies de hordes zijn die je over 
 moet bij het maken van packages als babette en pirouette. 
