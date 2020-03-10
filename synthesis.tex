@@ -135,18 +135,46 @@ Of course, older articles have had more time to accumulate citations.
 ## Community
 
 A time-consuming aspects of developing software is taking care of its
-users.
+users, which includes the developer(s).
 
+Users expect that R packages are easy to install.
+The R community has a centralized website from which packages
+can be installed easily, called CRAN (short for 'Comprehensive R Archive 
+Network').
+Therefore, a developer aims to get his/her package on CRAN.
+There are, however, many 
+guidelines (see \url{https://cran.r-project.org/web/packages/policies.html}) before 
+a package gets accepted on CRAN.
+These guidelines exist to guarantee a minimum level of quality.
 
-An aspect that is commonly overlooked is the maintenance of software.
+The most important guideline when submitting an R package to CRAN,
+is that all its dependencies are on CRAN. Figure \ref{fig:dependencies}
+shows the dependencies of the R packages used in this thesis, showing that
+three out of the five babette packages depend on the two others. 
+It would take one full year to get all packages on CRAN.
 
 \begin{figure}[H]
   \includegraphics[width=0.8\textwidth]{dependencies.png}
   \caption{
-    SLOCcount 
+    Minimal spanning tree of the dependencies of the R packages used in this
+    thesis. Arrows go from the package dependended upon (at the tail), 
+    to the package that depends on the package (at the head). For example,
+    beastier depends on beautier. The packages on CRAN are beautier,
+    tracerer, beastier, mauricer and babette.
   }
   \label{fig:dependencies}
 \end{figure}
+
+A consequence of taking care for the user, is that there should be
+a version of each of the packages that always works, regardless of ongoing
+development. If a top-level package, say 'razzo' requires some different 
+functionality of a bottom-level package such as 'beautier', there
+can be a cascade of new versions: a change in 'beautier' 
+can cause a change in any of the packages that depend on its.
+Due to this, 'beautier' (as of 2020-03-10) is at its fourth CRAN version.
+
+Users also expect a community: a place where they can ask questions,
+submit bug reports and contribute new code. 
 
 
 
