@@ -173,10 +173,52 @@ can be a cascade of new versions: a change in 'beautier'
 can cause a change in any of the packages that depend on its.
 Due to this, 'beautier' (as of 2020-03-10) is at its fourth CRAN version.
 
+Users expect that the code they use has a certain quality,
+as they will depend on it. There are multiple ones to verify
+code quality. A popular feature is the use of status badges: 
+dynamic images shown in the README of a project that 
+signal a certain aspect of it, such as build status and code coverage.
+Additionally, code should be open, so the style and extent of tests can
+be verified. An example of a package that can improve in this
+regard is the 'ape' package (\cite{ape}), which contains
+a class for a phylogeny. It is possible to read the R code 'ape' consists
+of from a CRAN submission. Except for that, there is no way to 
+verify the code quality and development process: code is added by sending 
+it per email, there is no website (such as
+GitHub) that tracks the development of the code and the tests are 
+unavailable (although they are rumored to exists, according to personal 
+communication with Emannuel Paradis). 
+
+Users also need documentation to learn to use a new package.
+One piece of documentation is an academic paper describing the functionality
+of a package. Such a paper is useful for getting the idea behind a package.
+User group meetings and tutorials (articles and videos) are better at
+learning how to use a package. BEAST2 has a user group meeting every half year,
+as well as dozens of tutorials (of which three I wrote). Specific to
+the R programming language is the vignette, a kind of documentation that
+can run a package's code. Counting the vignettes, 'beautier' has four, 
+phangorn has two, 'pirouette' has six, 'daisieme' has one (but well,
+it is unfinished), DAISIE has two and 'razzo' has two. 
+The complete babette package suite has
+22 vignettes.
+Additionally, for 'babette', and 'pirouette' there are some video's to
+be downloaded or to be streamed from YouTube.
+
 Users also expect a community: a place where they can ask questions,
-submit bug reports and contribute new code. 
+submit bug reports and contribute new code. GitHub has a checklist of
+seven recommended community standards (see, for 
+example, \url{https://github.com/ropensci/babette/community}): having 
+a one-line project description, 
+having a README file, having a Code of Conduct, having a
+document that describes how to contribute, having specified a software license, 
+as well as having template texts for Issues (among others, bug reports
+and feature request) and pull request (which is a code contribution of any type).
+Of these seven standard, BEAST2 has three, 
+'beautier' all, phangorn has two, 'pirouette' and 'daisieme' have all,
+DAISIE has two and 'razzo' has six.
 
-
+I dare conclude that my software is of exemplary quality. I predict this
+will be most effective for science as a whole, at the cost of my own time.
 
 ## Scientific method
 
@@ -185,7 +227,17 @@ this thesis, let's take a look at the scientific methods used.
 
 ### Reproduction in practice
 
- * Important for science
+Reproducibility is an essential ingredient of science (\cite{mcnutt2014reproducibility}).
+The inability to reproduce experiments resulted in the so-called 'reproducibility
+crisis', which still is ongoing (\cite{schooler2014metascience}).
+One major factor of the irreproducibility is due to publication
+bias (\cite{nissen2016publication}), which means that there is a bias
+in the articles that are published.
+Publication biases can stem from that an author does not consider
+a result eligible for publication (also known as the 'file drawer problem'),
+as well as that a publisher may consider not all papers worth publishing.
+
+
  * Good story and significant results likelier to be published
  * Cause HARKing and p-value hacking
  * Irreproducible science
