@@ -218,7 +218,7 @@ Of these seven standard, BEAST2 has three,
 DAISIE has two and 'razzo' has six.
 
 I dare conclude that my software is of exemplary quality. I predict this
-will be most effective for science as a whole, at the cost of my own time.
+will be most effective for science as a whole, at the cost of (only) my own time.
 
 ## Scientific method
 
@@ -230,33 +230,117 @@ this thesis, let's take a look at the scientific methods used.
 Reproducibility is an essential ingredient of science (\cite{mcnutt2014reproducibility}).
 The inability to reproduce experiments resulted in the so-called 'reproducibility
 crisis', which still is ongoing (\cite{schooler2014metascience}).
-One major factor of the irreproducibility is due to publication
-bias (\cite{nissen2016publication}), which means that there is a bias
-in the articles that are published.
-Publication biases can stem from that an author does not consider
-a result eligible for publication (also known as the 'file drawer problem'),
-as well as that a publisher may consider not all papers worth publishing.
 
+There are multiple threats to deliver reproducible 
+science (\cite{munafo2017manifesto}).
+The two threats most relevant in the context
+of my research are HARKing and p-hacking (see 
+figure \ref{fig:manifesto} for all threats).
+HARKing, short for 'Hypothesis After Results are Known' is the practice
+to write down a hypothesis after having done an experiment.
+p-value hacking is the process of changing the analysis up until
+something significant is found. 
 
- * Good story and significant results likelier to be published
- * Cause HARKing and p-value hacking
- * Irreproducible science
+\begin{figure}[H]
+  \includegraphics[width=0.8\textwidth]{munafo2017manifesto_fig_1.jpg}
+  \caption{
+    SLOCcount 
+  }
+  \label{fig:manifesto}
+\end{figure}
+
+The drawback of HARKing and p-hacking is that it leads to
+irreproducible science. From HARKing, hypotheses that we not under
+investigation, suddenly get some credibility, obtained from a
+random/no effect. p-value hacking gives more credibility 
+to an experimental variable having an effect than warranted.
+It is estimated that 85% of the publications in biomedical sciences
+is a waste of resources (\cite{chalmers2009avoidable}) (but note
+that this estimation is based on a logic reasoning, instead
+of empirical data), although the situation has improved 
+since (\cite{macleod2014biomedical}). 
 
 ### Assuring reproduction in practice
 
- * Pre-registration
+One way to protect one's research from HARKing and p-hacking
+is the use of preregistration. Preregistration is the act of
+publishing an experiment's hypothesis, methods and analysis,
+before the experiment is finished. 
 
 ### Reproduction in this thesis
 
- * Use of dated commits
- * Wrote down hypotheses and results before having results
- * Pilot runs can be accessed, communication open
+The work in this thesis adheres to many of the best 
+practices for reproducible research (\cite{munafo2017manifesto}).
+All papers in this thesis are Open Access.
+The 'razzo' experiment was not pre-registered, as a lighter variant was used:
+code, manuscript and communication went via GitHub. GitHub is a website that
+allows people to collaborate. A feature of GitHub is that it keeps track
+of all changes. For 'razzo', the hypotheses and methods were written
+before the first results, and it is possible to verify this.
+Also the pilot runs of 'razzo' can be found, as well as their results.
+By being completely open, we protected ourselves against HARKing and
+p-hacking.
 
 ## Biology
 
+Now that we have an idea of practical work and scientific methods underlying
+this thesis, we can take a look what this thesis has contributed to
+increase our biological knowledge. 
+
+### 'babette'
+
+Because 'babette' calls BEAST2, it is tempting to say that 'babette'
+is just as relevant to the field of biology as BEAST2. 
+This claim would be false, as not all aspects of BEAST2 are available
+within 'babette'. The contribution of 'babette' to the field of biology, 
+is that it leads to more reproducible research: where it takes multiple
+programs to create, start and analyse a BEAST2 experiment, 'babette'
+can do this from one R script. 
+
+### 'pirouette' 
+
+The contribution of 'pirouette' to the field of biology, 
+is that it gives a thoroughly-tested framework to answer
+basic phylogenetic questions. The supplementary materials 
+of 'pirouette' shows plenty of examples that can evolve into
+a full academic paper when investigated more systematically.
+
+What was unpredicted about 'pirouette', is that it can be used to 
+investigate different models of how an alignment is simulated
+from a phylogeny. This was an unexpected example of the flexiblity of 
+pirouette and I wonder where 'pirouette' will be used for in the future.
+
 ### razzo
 
- * straightforward results
+The contribution of 'razzo' to the field of biology
+are the introduction of a new tree model, 
+and measuring the error we make in our phylogenetic inference when
+nature follows a non-standard speciation model.
+This non-standard speciation model is the multiple-birth death (MBD) tree model,
+which is the first tree model that allows multiple speciation events to occur 
+at exactly the same time.
+The predictions of 'razzo' have always been straightforward:
+the stronger a tree violates the assumptions of a standard tree
+prior, the bigger the inference error made by that prior.
+What is unknown, is the extent to which this happens.
+
+There are some assumptions that 'razzo' makes that can be discussed,
+which are the assumptions of the MBD tree model and the assumptions
+made by the experimental setup.
+Where the MBD model assumes speciation events can co-occur at exactly
+the same time, one could easily argue that two speciation events
+at different locations cannot happen at \emph{exactly} the same time.
+The elegance of the MBD model is in the low number of parameters it
+needs to generate trees in which speciation can co-occur.
+
+The biological relevance of this project hinges on multiple unknown
+facets. We did not investigate how common the MBD model is in nature,
+instead the model is loosely based on one example, which is the 
+adaptive radiation in Lake Tanganyika. However,
+in the cases that MBD has a good fit with the data, 
+the 'razzo' experiment can show us the error we make in our phylogentic 
+inference. From this, we may either rest assured that our inference is good 
+enough, or that we really need to add MBD to the set of standard models.
 
 ## Cancelled projects
 
@@ -295,13 +379,6 @@ practices for improving the reliability of scientific
 discoveries (\cite{munafo2017manifesto}), which are the
 use of open data, software, as well as pre-registration.
 
-\begin{figure}[H]
-  \includegraphics[width=0.8\textwidth]{munafo2017manifesto_fig_1.jpg}
-  \caption{
-    SLOCcount 
-  }
-  \label{fig:manifesto}
-\end{figure}
 
 
 
