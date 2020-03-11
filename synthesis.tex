@@ -2,11 +2,9 @@
 \label{synthesis}
 \newpage
 
-\section{Past}
-
 \noindent
 
-## Summary
+\section{Summary}
 
 This thesis can be summarized in one sentence:
 we've developed the tools to measure the
@@ -20,7 +18,7 @@ From this rather plain foundation, I will move on
 to the way the actual research is done and ending
 with the implications for the field of biology.
 
-### Software
+\subsection{Software}
 
 A simple way to quantify the amount of work
 is to count the lines of code and compare with related
@@ -32,7 +30,7 @@ has the most lines of code, above 110k. After that comes
 'beautier' (27k lines), phangorn (18k), 'pirouette' (17k), 'daisieme' (13k), 
 DAISIE (12k) and 'razzo' (8k). 
 'beautier' is an R package that creates a BEAST2 
-input file, and part of the 'babette' package suite, as described
+input file, and part of the \verb;babette; package suite, as described
 in chapter 2. 
 'phangorn' is a general phylogentics package of which I fixed some bugs.
 'pirouette' is the package described in chapter 3. 
@@ -44,7 +42,7 @@ in 90k lines of code. This number of lines is still less than
 BEAST2 (with 110k), except all written in half the time. Also note that
 BEAST2 has 26 collaborators, of which 6 contributed more than 1k lines of code.
 
-\begin{figure}[H]
+\begin{figure}[]
   \includegraphics[width=0.8\textwidth]{sloccount.png}
   \caption{
     SLOCcount 
@@ -52,7 +50,7 @@ BEAST2 has 26 collaborators, of which 6 contributed more than 1k lines of code.
   \label{fig:sloccount}
 \end{figure}
 
-### Quality
+\paragraph{Quality}
 
 Judging code by the number lines of code is simple, but this is irrelevant 
 to estimate the quality of the software.
@@ -87,13 +85,13 @@ academic manuscripts, also code can be peer reviewed.
 For R code, rOpenSci is the non-profit organisation that does so.
 Note that a prerequisite for a code review by rOpenSci is that code coverage is 100\%,
 therefore 'phangorn' and 'DAISIE' are not yet eligible.
-The five packages of the 'babette' package suite have been reviewed, 
+The five packages of the \verb;babette; package suite have been reviewed, 
 where 'mcbette' is under review. 
-The full process of the review of 'babette' took approximately one year,
+The full process of the review of \verb;babette; took approximately one year,
 as this is done in the free time of both me and the reviewers.
 Mostly due to this, there has not been time yet to have 'pirouette' reviewed.
 
-### Relevance
+\paragraph{Relevance}
 
 The relevance of software is another facet: one may write big pieces
 of software of high quality, but if nobody uses it, the work is 
@@ -113,14 +111,14 @@ Logged-in users (there are 40 million) can give a star to a project
 to indicate his/her appreciation of the project.
 Going through the projects in \ref{fig:sloccount}, most stars
 are given to BEAST2: 134 (at 2020-03-09), followed
-by 'phangorn' with 110 and 'babette' with 20 stars.
+by 'phangorn' with 110 and \verb;babette; with 20 stars.
 After 'beautier' (6), tracerer (5), beastier (5)
 and mcbette (4), 'pirouette', DAISIE and nLTT only have 3 stars.
 For repositories with 3 or less stars, these stars are given by
 the developers themselves and thus less relevant to indicate
 the relevance of a project.
 
-## Academic relevance of software
+\paragraph{Academic relevance}
 
 An academic way to estimate the relevance of a piece of software,
 is to count the number of citations the article describing it
@@ -132,7 +130,7 @@ nLTT \cite{janzen2015approximate} has 17,
 and babette \cite{bilderbeek2018babette} has 2. 
 Of course, older articles have had more time to accumulate citations.
 
-## Community
+\paragraph{Community}
 
 A time-consuming aspects of developing software is taking care of its
 users, which includes the developer(s).
@@ -153,8 +151,8 @@ shows the dependencies of the R packages used in this thesis, showing that
 three out of the five babette packages depend on the two others. 
 It would take one full year to get all packages on CRAN.
 
-\begin{figure}[H]
-  \includegraphics[width=0.8\textwidth]{dependencies.png}
+\begin{figure}[]
+  \includegraphics[width=0.6\textwidth]{dependencies.png}
   \caption{
     Minimal spanning tree of the dependencies of the R packages used in this
     thesis. Arrows go from the package dependended upon (at the tail), 
@@ -201,7 +199,7 @@ phangorn has two, 'pirouette' has six, 'daisieme' has one (but well,
 it is unfinished), DAISIE has two and 'razzo' has two. 
 The complete babette package suite has
 22 vignettes.
-Additionally, for 'babette', and 'pirouette' there are some video's to
+Additionally, for \verb;babette;, and 'pirouette' there are some video's to
 be downloaded or to be streamed from YouTube.
 
 Users also expect a community: a place where they can ask questions,
@@ -220,12 +218,12 @@ DAISIE has two and 'razzo' has six.
 I dare conclude that my software is of exemplary quality. I predict this
 will be most effective for science as a whole, at the cost of (only) my own time.
 
-## Scientific method
+\subsection{Scientific method}
 
 Now that we have an idea of the amount of practical work underlying
 this thesis, let's take a look at the scientific methods used.
 
-### Reproduction in practice
+\paragraph{Reproduction in practice}
 
 Reproducibility is an essential ingredient of science (\cite{mcnutt2014reproducibility}).
 The inability to reproduce experiments resulted in the so-called 'reproducibility
@@ -241,7 +239,7 @@ to write down a hypothesis after having done an experiment.
 p-value hacking is the process of changing the analysis up until
 something significant is found. 
 
-\begin{figure}[H]
+\begin{figure}[]
   \includegraphics[width=0.8\textwidth]{munafo2017manifesto_fig_1.jpg}
   \caption{
     SLOCcount 
@@ -260,14 +258,14 @@ that this estimation is based on a logic reasoning, instead
 of empirical data), although the situation has improved 
 since (\cite{macleod2014biomedical}). 
 
-### Assuring reproduction in practice
+\paragraph{Assuring reproduction in practice}
 
 One way to protect one's research from HARKing and p-hacking
 is the use of preregistration. Preregistration is the act of
 publishing an experiment's hypothesis, methods and analysis,
 before the experiment is finished. 
 
-### Reproduction in this thesis
+\paragraph{Reproduction in this thesis}
 
 The work in this thesis adheres to many of the best 
 practices for reproducible research (\cite{munafo2017manifesto}).
@@ -281,23 +279,23 @@ Also the pilot runs of 'razzo' can be found, as well as their results.
 By being completely open, we protected ourselves against HARKing and
 p-hacking.
 
-## Biology
+\subsection{Biology}
 
 Now that we have an idea of practical work and scientific methods underlying
 this thesis, we can take a look what this thesis has contributed to
 increase our biological knowledge. 
 
-### 'babette'
+\paragraph{babette}
 
-Because 'babette' calls BEAST2, it is tempting to say that 'babette'
+Because \verb;babette; calls BEAST2, it is tempting to say that \verb;babette;
 is just as relevant to the field of biology as BEAST2. 
 This claim would be false, as not all aspects of BEAST2 are available
-within 'babette'. The contribution of 'babette' to the field of biology, 
+within \verb;babette;. The contribution of \verb;babette; to the field of biology, 
 is that it leads to more reproducible research: where it takes multiple
-programs to create, start and analyse a BEAST2 experiment, 'babette'
+programs to create, start and analyse a BEAST2 experiment, \verb;babette;
 can do this from one R script. 
 
-### 'pirouette' 
+\paragraph{'pirouette'} 
 
 The contribution of 'pirouette' to the field of biology, 
 is that it gives a thoroughly-tested framework to answer
@@ -310,7 +308,7 @@ investigate different models of how an alignment is simulated
 from a phylogeny. This was an unexpected example of the flexiblity of 
 pirouette and I wonder where 'pirouette' will be used for in the future.
 
-### 'razzo'
+\paragraph{'razzo'} 
 
 The contribution of 'razzo' to the field of biology
 are the introduction of a new tree model, 
@@ -342,12 +340,12 @@ the 'razzo' experiment can show us the error we make in our phylogentic
 inference. From this, we may either rest assured that our inference is good 
 enough, or that we really need to add MBD to the set of standard models.
 
-## Cancelled projects
+\subsection{Cancelled projects}
 
 During my thesis, I worked on some other projects that did not make
 it into this booklet. I will discuss these here.
 
-### 'raket'
+\paragraph{'raket'} 
 
 'raket' is the ancestor of all chapters in this thesis.
 It would do the same thing as 'razzo', but for a different non-standard 
@@ -374,7 +372,7 @@ if nature follows a non-standard speciation model. The same remarks as
 In the cases that nature fits the PBD model well, then 'raket' would have
 been able to show the extent of the inference error.
 
-### 'daisieme'
+\paragraph{'daisieme'} 
 
 'daisieme' (pronounce 'day-sham', similar to the French 'deuxième') is
 a project based on DAISIE (\cite{daisie}). DAISIE is an island model,
@@ -389,12 +387,12 @@ for varying levels of mainland extinction. We can assume that the inference
 error increases for increasing levels of mainland extinction, but the extent
 of this error will remain unknown for now.
 
-## Reflection
+\subsection{Reflection}
 
 When looking back at my PhD, I see some things that I will
 do again, that I will avoid in the future, and some future work.
 
-### Things that I will do again
+\paragraph{Things that I will do again} 
 
 It was inevitable that I would write exemplary software. Writing such
 software takes years, if not decades, of learning. 
@@ -421,7 +419,7 @@ the experiment. Since then, I have taken that route.
 I am happy that if I ask myself 'Do I believe my own research findings?', 
 that I can say yes.
 
-### Things that I will avoid
+\paragraph{Things that I will avoid} 
 
 Already early in my PhD, the first ideas of 'raket'/'razzo' were
 taking shape. Back then, I suggested not to persue this line of
@@ -459,7 +457,7 @@ pipeline. There is some benefit to use twinning, but I think
 it would have been superior to show this benefit by reproducing an earlier
 'pirouette' publication with this new feature.
 
-### Future work
+\subsection{Future work}
 
 My suggestions for future work are rather straightforward:
 (1) to measure the inference error we make on \emph{standard}
@@ -467,7 +465,7 @@ speciation models, (2) to measure the inference error we make
 on \emph{other non-standard} speciation models, and (3) to
 make the MBD tree model part of the set of standard models.
 
-### Apply 'pirouette' on standard speciation models
+\paragraph{Apply 'pirouette' on standard speciation models} 
 
 The goal of 'pirouette' is the measure the inference error
 when a phylogeny is created by a non-standard tree model,
@@ -499,240 +497,49 @@ I understand why this has not been researched: it takes too long
 and there is little glory in finding this out. With 'pirouette', however,
 it should at least be easy to setup these experiments.
 
-### Apply 'pirouette' on multiple novel speciation models
-
-### Add MBD tree prior to BEAST2
-
-
-
-
-
-
-
-
-
- * 
-
- * Agree in words, less agree in deeds, less agree in others \cite{anderson2007normative}
-
-
-
-It 
-
-
-
-All chapters of these thesis (including this one) follow the best
-practices for improving the reliability of scientific 
-discoveries (\cite{munafo2017manifesto}), which are the
-use of open data, software, as well as pre-registration.
-
-
-
-
-
-
-
-
-\cite{nosek2015promoting}
-The Open Science movement 
- * open publications
- * open data
- * open software
- * transparent: unability to HARK
- * reproducibility
-
-
-During this PhD, I discovered the Open Science movement. 
-
-
-
-
-
-
-
-
-
-
-Judging code by its quality
-metrics 
-
- * lines of code
- * quality
- * relevance
-
-
-
- * tool development: babette
- * high quality
- * care for user
- * 
-
-
-
-
-## Goal 
-
-The goal of the research projects
-described in this thesis
-was to measure the error we make in today's phylogenetic inference.
-In the end, I must conclude that the foundation to do so, is firmly 
-put in place, reasonably well investigated and paves the way for
-more biological example.
-
-## Discussion of results
-
-### pirouette and razzo only lightly explored
-
-
-## Apply to PBD model: raket
-
-## Mechanistic model: pbdmms
-
-## Mainland extinction: daisieme
-
-## Altmetrics
-
-Some altmetrics:
-
- * 60,000 GitHub commits, 1.1k repos, 421 stars, 242 followers
- * 133 YouTube videos on babette (9), R (8), C++ (14), 68 subscribers, 11k views
- * Supervised 2 MSc students (Jorik Boer, Kees Wesselink)
- * Supervised 6 BSc students (Joris Damhuis, 
-   Damian Over, Dave Nijhuis, Elles Jetten, Femke Thon, Jolien Gay)
- * Supervised 7 interns from secondary schools (Jorn Prenger, Mart Prenger, 
-   Anne Hinrichs, Joshua van Waardenberg, Marijn Meerveld, Jeroen Niemendal, 
-   Rijk van Putten)
- * Organised 172 social events
- * Since Jan 2017, presented 20 times at TECE
- * Publish 5 packages on CRAN (beautier, tracerer, beastier, mauricer, babette)
- * Passed rOpenSci peer-review for 4 R packages (beautier, tracerer, beastier, babette)
- * Taught +220 evenings about programming
-
-\dropcap{T}{his} thesis answers a facet of the question 
-
-
-'What is the error we make in inferring a phylogeny
-
-describes a tool I created together with Giovanni Laudanno, 
-to measure the error we make in inferring a phylogeny, due to
-picking the wrong speciation model. 
-With this novel tool, called \verb;pirouette; (chapter 3),
-the field of phylogenetics now has a method, 
-with which we demonstrate if and when the standard speciation models
-are justifiably good. 
-
-I define 'standard speciation model' as the speciation models 
-present in the phylogenetic tool BEAST2, which are the Yule and
-Birth-Death model. The Yule model assumes no extinction
-and a constant speciation rate, where the Birth-Death model
-assumes a constant speciation and extinction rate. As
-it is 
-
-There are two speciation models that are (yet) non-standard.
-The first speciation model, 
-unlike the standard speciation models, 
-allows speciation to co-occur.
-When there is a scenario in nature, in which a process triggers speciation
-in multiple species, this multiple-birth death (MBD) model would be the better fit. 
-In chapter 4, Giovanni Laudanno and me 
-use \verb;pirouette; to 
-measure the error we make, 
-when we use a standard speciation model on a process we know (read: simulated) 
-to follow the MBD process.
-From that we found that ...
-
-The second non-standard speciation model,
-unlike the standard speciation models,
-assumes that speciation takes time,
-which is encorporated in the protracted-birth death (PBD) model
-In chapter 5, I 
-use \verb;pirouette; to 
-measure the error we make, when we use a standard speciation
-model on a process we know to follow the PBD process.
-From that we found that ...
-
-\section{Open questions and future work}
-
-Now we can measure the errors we make in our phylogentic
-inference, when using a standard phylogentic model on a
-true process following a non-standard model. 
-\verb;pirouette; can serve as a litmus test 
-to measure the relevance of a novel tree prior. 
-
-Of course, there are already ways to estimate the relevance of a
-novel speciation model. A straighforward one, is to add the speciation
-model to the set of standard models, after which its inference is
-compared with the standard models. A drawback of this approach, is
-that it is harder to develop: not only need the novel speciation model
-be able to simulate its phylogenies, also a likelihood equation is needed
-to allow it to be used by the phylogenetic tools. Developing such a
-likelihood equation may be harder than using \verb;pirouette;.
-
-The step forward of \verb;pirouette; is that it allows 
-to quantify the error we make in our phylogentic inference, by
-expressing it as (usually) two distributions: one with the baseline errors,
-one with the added error caused by using an incorrect phylogenetic model.
-What is missing in \verb;pirouette;, is a clear-cut interpretation of these 
-error distributions, that is, a clear yes/no answer to the question: 'Is
-using the standard phylogenetic models good enough?'. Only when the two
-distributions overlap, can we confidently claim a yes. 
-
-There have been defensible, yet arbitrary, choices made in the pipeline
-of \verb;pirouette;. For example, a twin alignment has as much
-mutations acculated from the root sequence, as the true alignment. 
-This design choice should assure the Bayesian inference in the next step
-to work on an equal amount of genetic information. Unknown is if this
-indeed improves the judgements made by \verb;pirouette;. These choices
-should one day be parameters of using \verb;pirouette; as well.
-
-We apply the \verb;pirouette; methodology in chapter 4 and 5.
-We show that the error in a Bayesian inference on
-phylogenies increases when the effects of co-occuring 
-or protracted speciation are stronger. 
-This qualitative conclusion is obvious, 
-but the extent of these errors has never been quantified before.
-An obvious follow-up question is, 
-what are examples in nature where we expect a high 
-abundance of co-occurring or protracted speciation, 
-and thus, what is the
-error empiricist make?
-
-Disregarding the results of chapters 3 and 4, there are
-at least two reasons to add the MBD and PBD tree models to the standard
-phylogentic models anyway. The first reason is methodological: perhaps
-the \verb;pirouette; setup gave rise to an inrepresentative conclusion.
-Using the actual tree prior in inference and comparing its performance
-to the standard ones, is still the most straightforward way to determine,
-ironically, if the novel tree prior adds value as a standard tree prior.
-The second reason to add a novel tree prior the standard models, is
-because of the model parameters that are estimated jointly with the
-phylogenies. The clearest example is the PBD model, which allows one
-to estimate biologically relevant parameters such as the duration of speciation.
-
-This thesis gives the field of phylogenetics tools and examples of
-how to quantify the effect of a tree prior on Bayesian inference.
-It will help research find the border between when speciation models are
-simple enough, yet not too simple. As all articles within this thesis,
-this thesis itself and all its source code is free (as in freedom),
-there is little in the way of this research contributing to the field. 
+\paragraph{Apply 'pirouette' on multiple novel speciation models} 
+
+The inference error that 'razzo' measures, is caused by the
+mismatch of using an MBD tree, yet assuming a BD tree model.
+It is easy to do this for any non-standard tree model, such as
+PBD, but also a time or diversity dependent tree model. Using
+different non-standard tree priors, gives us a better idea of when we can
+and when we cannot use our standard tree priors.
+
+\paragraph{Add MBD tree prior to BEAST2}
+
+In 'razzo', we measure the inference error we make, when we generate
+and MBD tree and assume a BD tree model in our inference. What we
+do not know is the inference error would we assume an MBD tree model in
+our inference. Being able to use an MBD tree prior would give another
+baseline error: the inference error when nature follows MBD and we
+correctly assume this. To do so, the MBD tree prior must be added to BEAST2, 
+\verb;babette; should be able to use it, then a study similar to 'razzo' can be done.
+
+\subsection{Final words}
+
+I think the work in this thesis is the work I should have been doing.
+I hope that many phylogeneticists will happily build upon my work
+and bask in the resulting glory.
+
+\fbox{
+  \begin{minipage}{\textwidth}
+  My PhD in altmetrics.
+
+  \itemize{
+   \item 60,000 GitHub commits, 1.1k repos, 421 stars, 242 followers
+   \item 133 YouTube videos, 68 subscribers, 11k views
+   \item Supervised 2 MSc students
+   \item Supervised 6 BSc students
+   \item Supervised 7 interns from secondary schools
+   \item Organised 172 social events
+   \item Since Jan 2017, presented 20 times at TECE
+   \item Publish 5 packages on CRAN
+   \item Passed rOpenSci peer-review for 4 R packages
+   \item Taught +220 evenings about programming
+  }
+  \end{minipage} 
+}
 
 \references{synthesis}
-
-
-RSE: De synthese is duidelijk nog niet af, dus daar zal ik niet veel over zeggen, 
-behalve dat er nog in staat dat je pirouette ook op PBD hebt toegepast. 
-Als dat niet in je proefschrift komt, moet je dat natuurlijk aanpassen. 
-Mocht je echter pilotruns hebben gedaan, 
-dan kun je die wel in de synthese of in een apart hoofdstuk kwijt. 
-Dat geldt ook voor het werk aan daisieme dat je ism studenten hebt gedaan. 
-Maar dat heeft geen hoge prioriteit.
-
-Het zou ook goed zijn als je aangeeft wat precies de hordes zijn die je over 
-moet bij het maken van packages als babette en pirouette. 
-Ik sprak laatst iemand die dacht dat je een theoretische studie heel snel kan doen, 
-alleen maar even de computer zijn gang laten gaan. 
-Het is goed voor de lezer (zowel je vrienden/familie als de leescommissie) 
-om inzicht te krijgen in het proces van "even de computer zijn gang laten gaan". 
-Een soort "making of" dus. Als het beter past in een box of in de synthese, 
-dan mag dat wat mij betreft ook.
 
