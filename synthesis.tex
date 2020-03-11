@@ -310,7 +310,7 @@ investigate different models of how an alignment is simulated
 from a phylogeny. This was an unexpected example of the flexiblity of 
 pirouette and I wonder where 'pirouette' will be used for in the future.
 
-### razzo
+### 'razzo'
 
 The contribution of 'razzo' to the field of biology
 are the introduction of a new tree model, 
@@ -344,22 +344,91 @@ enough, or that we really need to add MBD to the set of standard models.
 
 ## Cancelled projects
 
-### raket
+During my thesis, I worked on some other projects that did not make
+it into this booklet. I will discuss these here.
 
- * sampling matters
- * straightforward results
+### 'raket'
 
-### daisieme
+'raket' is the ancestor of all chapters in this thesis.
+It would do the same thing as 'razzo', but for a different non-standard 
+speciation model. This non-standard speciation model is
+called the Protacted Birth-Death model (PBD), in which speciation
+takes time: after a speciation event, one of the two new species is not
+directly recognized as such. Up until these are recognized, the number
+of species that are present (when looking back from the future) 
+is underestimated.
 
- * straightforward results
+The 'raket' experiment would have one extra step compared to the 'razzo'
+experiment: in the 'raket' experiment, an \emph{incipient} species tree
+would be simulated first, after which a species tree would be created
+from it. The way to do so, is by picking incipient species to represent
+a species.
 
-### pbdmms
+One novel finding of the 'raket' experiment, is the way that picking
+which incipient represents which species is not always intuitive.
+From the three existing methods to do so, two new methods have been added. 
 
- * mechanistic models in speciation
+'raket' would be another illustration of the inference error we make
+if nature follows a non-standard speciation model. The same remarks as
+'razzo' apply here as well: it is unknown how well nature fits the PBD model.
+In the cases that nature fits the PBD model well, then 'raket' would have
+been able to show the extent of the inference error.
 
-## Future work
+### 'daisieme'
+
+'daisieme' (pronounce 'day-sham', similar to the French 'deuxième') is
+a project based on DAISIE (\cite{daisie}). DAISIE is an island model,
+which allows to estimate speciation, extinction and migration rates 
+from one or more phylogenies. Island models, such as DAISIE, typically
+assume that the species on the mainland are fixed. 'daisieme' would
+investigate this assumption, by simulating phylogenies that do have
+mainland extinctions.
+
+'daisieme' would show the extent of the inference error we make,
+for varying levels of mainland extinction. We can assume that the inference 
+error increases for increasing levels of mainland extinction, but the extent
+of this error will remain unknown for now.
 
 ## Reflection
+
+When looking back at my PhD, I see some things that I will
+do again, that I will avoid in the future, and some future work.
+
+### Things that I will do again
+
+It was inevitable that I would write exemplary software. Writing such
+software takes years, if not decades, of learning. 
+Already a dozen of years before my PhD, I started reading the literature
+regarding software development. One could argue that, would I have done 
+a worse job, I would have published more academic papers. I even agree
+on that! But for science as a whole, I think what I did is the superior
+way to go, where the cost of the few (that is, me) benefits the many. 
+For me, it always hurts when some software developer does not
+care about his/her users, as I can easily envision the frustration 
+this will cause.
+
+Following the best practices for reproducible science is something
+I learned during my PhD and I will definitely continue (and improve)
+doing so. I think it was in my second year as a PhD, 
+when I noticed the question 'Do I believe this?' would pop up
+after a scientific talk. The answer, usually, was a no. First I thought
+that HARKing and p-hacking were even part of how science works
+and I did not want to become such a -in my eyes: fake- scientist.
+A presentation by Simine Vazire about Open Science showed me a way
+to conduct science in a way that would make me believe the result,
+among others to write an academic manuscript before having done
+the experiment. Since then, I have taken that route. 
+I am happy that if I ask myself 'Do I believe my own research findings?', 
+that I can say yes.
+
+### Things that I will do avoid
+
+Already early in my PhD, the first ideas of 'raket'/'razzo' were
+taking shape. Back then, I suggested to not do this. 
+
+
+### Future work
+ 
 
  * less features in pirouette
  * shortcut to pirouette results
