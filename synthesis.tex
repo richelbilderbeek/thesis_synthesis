@@ -421,19 +421,97 @@ the experiment. Since then, I have taken that route.
 I am happy that if I ask myself 'Do I believe my own research findings?', 
 that I can say yes.
 
-### Things that I will do avoid
+### Things that I will avoid
 
 Already early in my PhD, the first ideas of 'raket'/'razzo' were
-taking shape. Back then, I suggested to not do this. 
+taking shape. Back then, I suggested not to persue this line of
+research, because it would be clunky and unelegant. Clunky, because
+already one Bayesian phylogentic analysis takes hours. Unelegant,
+because of the backbone is just a factorial design of varying
+parameters. Nowadays, I still agree on this.
+I think, similar to other people in phylogenetics,
+that I should have persued more light-weight and elegant experiments.
 
+When developing a pipeline such as 'pirouette', there is a tension
+between (1) adding a new feature, (2) publish. The basic
+and minimal pipeline is the setup without candidate models and without
+twinning. Already this subset of the pipeline allows one to 
+measure the inference error we make in phylogenetic inference.
+The 'raket' paper, that was pre-registered two years ago, used only
+that part of the pipeline. Instead of investigating this minimal
+pipeline and publish the findings, features were added instead.
+These features are the use candidate models and the addition
+of a twin pipeline. 
+
+The first extra 'pirouette' feature, which is the use of candidate models,
+has, in my opinion, caused mostly harm to my PhD, without adding
+enough value. The main reason for this harm, is that the use of candidate
+models can only run under Linux and Mac, due to a feature of BEAST2 that
+only works under those two operating systems. Most desktop users, however,
+use the Windows operating system, so I needed to take this into account.
+Due to this, I had to write code that I would never run myself, a weird
+situation. Also, my co-author Giovanni Laudanno, who uses Windows, had
+a hard time to contribute to the 'pirouette' code. 
+
+The second extra 'pirouette' feature, which is the use of a twin pipeline,
+was, in my opinion, unwarranted to add before the publication of the minimal
+pipeline. There is some benefit to use twinning, but I think 
+it would have been superior to show this benefit by reproducing an earlier
+'pirouette' publication with this new feature.
 
 ### Future work
- 
 
- * less features in pirouette
- * shortcut to pirouette results
+My suggestions for future work are rather straightforward:
+(1) to measure the inference error we make on \emph{standard}
+speciation models, (2) to measure the inference error we make 
+on \emph{other non-standard} speciation models, and (3) to
+make the MBD tree model part of the set of standard models.
+
+### Apply 'pirouette' on standard speciation models
+
+The goal of 'pirouette' is the measure the inference error
+when a phylogeny is created by a non-standard tree model,
+but a standard tree prior is used in the inference. There are,
+however, only a couple of studies that investigate the
+inference error when using only standard tree models.
+
+I think it would be useful to measure the inference
+error when using a standard tree model, when also
+assuming that tree model in the inference. This will give the
+baseline error, in a similar fashion as twinning does.
+This error would be the baseline error, in a similar way that
+twinning allows one to measure this. From these baseline errors,
+I would enjoy to fit a mathematical model on these errors,
+to be able to obtain a prediction of this error without running
+the time-consuming Bayesian inference.
+
+A next fundamental step would be to measure the inference
+error when creating phylogenies using a different standard tree model
+as is assumed in the inference. 
+When we know the error we make when nature follows a BD model,
+when assuming a Yule model, this would give a sense of scale.
+It may even be that there is no reason to use BD at all,
+because the inference error is too little to warrant using it!
+Whatever this error, I would be curious to see how it compares
+to the errors found in 'razzo'. 
+
+I understand why this has not been researched: it takes too long
+and there is little glory in finding this out. With 'pirouette', however,
+it should at least be easy to setup these experiments.
+
+### Apply 'pirouette' on multiple novel speciation models
+
+### Add MBD tree prior to BEAST2
 
 
+
+
+
+
+
+
+
+ * 
 
  * Agree in words, less agree in deeds, less agree in others \cite{anderson2007normative}
 
@@ -456,7 +534,6 @@ use of open data, software, as well as pre-registration.
 
 
 \cite{nosek2015promoting}
-
 The Open Science movement 
  * open publications
  * open data
@@ -466,13 +543,6 @@ The Open Science movement
 
 
 During this PhD, I discovered the Open Science movement. 
-
-
-
-After putting the amount of work 
-
-It is hard to predict the relevance of the articles in this thesis.
-
 
 
 
