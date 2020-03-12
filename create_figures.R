@@ -16,7 +16,6 @@ richel_repo_names <- c(
   "richelbilderbeek/pirouette",
   paste0("richelbilderbeek/pirouette_example_", seq(1, 30)),
   "richelbilderbeek/raztr",
-  "richelbilderbeek/raztr",
   "richelbilderbeek/raket",
   "richelbilderbeek/razzo",
   "richelbilderbeek/ribir",
@@ -295,6 +294,10 @@ df_table <- dplyr::rename(
 df_table$name <- basename(df_table$name)
 # Remove the examples
 df_table <- df_table[stringr::str_detect(df_table$name, "example_", negate = TRUE), ]
+
+df_table$name[df_table$name == "babette_examples"] <- "babette examples"
+df_table$name[df_table$name == "pirouette_examples"] <- "pirouette examples"
+
 # Sort by name
 df_table <- df_table[ order(df_table$name), ]
 
@@ -313,7 +316,7 @@ print(
     label = "tab:repos",
     align = c(
       "p{0.0\\textwidth}",
-      "p{0.2\\textwidth}",
+      "p{0.11\\textwidth}",
       "p{0.4\\textwidth}",
       "p{0.1\\textwidth}",
       "p{0.05\\textwidth}",
@@ -328,9 +331,14 @@ print(
 
 
 # Horizontal bar
+df_bar <- df
+df_bar <- df_bar[df_bar$sloccount > 1000,]
+df_bar$name <- basename(df_bar$repo_name)
+df_bar$name[ df_bar$name == "pirouette_examples" ] <- "pirouette examples"
+
 ggplot(
-  data = df[df$sloccount > 1000,],
-  aes(x = basename(repo_name), y = sloccount / 1000)
+  data = df_bar,
+  aes(x = name, y = sloccount / 1000)
 ) + geom_col(position = "identity", color = "black", fill = "white") + coord_flip() +
   theme(legend.position="none") +
   scale_y_continuous(name ="SLOCcount (x1000)", breaks = seq(0, 150, 5)) +
