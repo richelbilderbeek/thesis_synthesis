@@ -81,5 +81,5 @@ after_script:
   - git clone https://github.com/klausVigo/phangorn
   - cd thesis_synthesis
   - Rscript create_figures.R
-  - Rscript -e 'spelling::spell_check_files("synthesis.tex")'
+  - Rscript -e 'spelling::spell_check_files("synthesis.tex", ignore = readLines("inst/WORDLIST"))'
 
