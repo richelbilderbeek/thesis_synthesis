@@ -73,6 +73,7 @@ repo_names_to_downloads_per_month <- function(repo_names) {
   as.integer(n)
 }
 
+
 repo_name_to_total_downloads <- function(repo_name) {
   # Numbers from screen grabs (in 'screen_grabs' folder),
   # taken at 2020-03-12
@@ -103,6 +104,41 @@ repo_names_to_titles <- function(repo_names) {
     titles[i] <- repo_name_to_title(repo_names[i])
   }
   titles
+}
+
+repo_name_to_codecov <- function(repo_name) {
+  # Numbers from screen grabs (in 'screen_grabs' folder),
+  # taken at 2020-03-12
+  if (repo_name == "richelbilderbeek/aureole") return(100)
+  if (repo_name == "ropensci/babette") return(100)
+  if (repo_name == "ropensci/beastier") return(100)
+  if (repo_name == "ropensci/beautier") return(100)
+  if (repo_name == "richelbilderbeek/becosys") return(78)
+  if (repo_name == "richelbilderbeek/daisieme") return(97)
+  if (repo_name == "richelbilderbeek/mcbette") return(100)
+  if (repo_name == "ropensci/mauricer") return(100)
+  if (repo_name == "richelbilderbeek/peregrine") return(98)
+  if (repo_name == "richelbilderbeek/pirouette") return(99)
+  if (repo_name == "richelbilderbeek/raket") return(58)
+  if (repo_name == "richelbilderbeek/razzo") return(76)
+  if (repo_name == "richelbilderbeek/ribir") return(95)
+  if (repo_name == "ropensci/tracerer") return(100)
+  if (repo_name == "rsetienne/DAISIE") return(0)
+  if (repo_name == "rsetienne/DDD") return(24)
+  if (repo_name == "giappo/mbd") return(82)
+  if (repo_name == "thijsjanzen/nLTT") return(99)
+  if (repo_name == "thijsjanzen/nodeSub") return(53)
+  if (repo_name == "rsetienne/PBD") return(57)
+  if (repo_name == "klausVigo/phangorn") return(69)
+  NA
+}
+
+repo_names_to_codecov <- function(repo_names) {
+  codecovs <- rep(NA, length(repo_names))
+  for (i in seq_along(repo_names)) {
+    codecovs[i] <- repo_name_to_codecov(repo_names[i])
+  }
+  as.integer(codecovs)
 }
 
 # Count non-whitespace lines
@@ -190,6 +226,7 @@ df <- data.frame(
   repo_name = all_repo_names,
   title = repo_names_to_titles(all_repo_names),
   sloccount = get_sloccounts(all_repo_names),
+  codecov = repo_names_to_codecov(all_repo_names),
   n_stars = count_ns_stargazers(all_repo_names),
   n_downloads_per_month = repo_names_to_downloads_per_month(all_repo_names),
   n_total_downloads = repo_names_to_total_downloads(all_repo_names),
@@ -215,6 +252,7 @@ df <- rbind(
         )
       ]
     ),
+    codecov = NA,
     n_stars = NA,
     n_downloads_per_month = NA,
     n_total_downloads = NA,
@@ -234,6 +272,7 @@ df <- rbind(
         )
       ]
     ),
+    codecov = NA,
     n_stars = NA,
     n_downloads_per_month = NA,
     n_total_downloads = NA,
@@ -248,6 +287,7 @@ df_table <- df
 df_table <- dplyr::rename(
   df_table,
   name = repo_name,
+  cc = codecov,
   ns = n_stars,
   ndm = n_downloads_per_month,
   ndt = n_total_downloads
@@ -276,6 +316,7 @@ print(
       "p{0.2\\textwidth}",
       "p{0.4\\textwidth}",
       "p{0.1\\textwidth}",
+      "p{0.05\\textwidth}",
       "p{0.05\\textwidth}",
       "p{0.1\\textwidth}",
       "p{0.1\\textwidth}"
