@@ -49,6 +49,54 @@ repo_name_to_title <- function(repo_name) {
   return(d$get_field("Title"))
 }
 
+repo_name_to_downloads_per_month <- function(repo_name) {
+  # Numbers from screen grabs (in 'screen_grabs' folder),
+  # taken at 2020-03-12
+  if (repo_name == "ropensci/babette") return(452)
+  if (repo_name == "ropensci/beastier") return(709)
+  if (repo_name == "ropensci/beautier") return(975)
+  if (repo_name == "ropensci/mauricer") return(742)
+  if (repo_name == "ropensci/tracerer") return(849)
+  if (repo_name == "rsetienne/DAISIE") return(736)
+  if (repo_name == "rsetienne/DDD") return(1951)
+  if (repo_name == "thijsjanzen/nLTT") return(702)
+  if (repo_name == "rsetienne/PBD") return(649)
+  if (repo_name == "klausVigo/phangorn") return(15e3)
+  NA
+}
+
+repo_names_to_downloads_per_month <- function(repo_names) {
+  n <- rep(NA, length(repo_names))
+  for (i in seq_along(repo_names)) {
+    n[i] <- repo_name_to_downloads_per_month(repo_names[i])
+  }
+  as.integer(n)
+}
+
+repo_name_to_total_downloads <- function(repo_name) {
+  # Numbers from screen grabs (in 'screen_grabs' folder),
+  # taken at 2020-03-12
+  if (repo_name == "ropensci/babette") return(1173)
+  if (repo_name == "ropensci/beastier") return(4579)
+  if (repo_name == "ropensci/beautier") return(7135)
+  if (repo_name == "ropensci/mauricer") return(2202)
+  if (repo_name == "ropensci/tracerer") return(5359)
+  if (repo_name == "rsetienne/DAISIE") return(18e3)
+  if (repo_name == "rsetienne/DDD") return(70e3)
+  if (repo_name == "thijsjanzen/nLTT") return(23e3)
+  if (repo_name == "rsetienne/PBD") return(28e3)
+  if (repo_name == "klausVigo/phangorn") return(420e3)
+  NA
+}
+
+repo_names_to_total_downloads <- function(repo_names) {
+  n <- rep(NA, length(repo_names))
+  for (i in seq_along(repo_names)) {
+    n[i] <- repo_name_to_total_downloads(repo_names[i])
+  }
+  as.integer(n)
+}
+
 repo_names_to_titles <- function(repo_names) {
   titles <- rep(NA, length(repo_names))
   for (i in seq_along(repo_names)) {
@@ -143,8 +191,12 @@ df <- data.frame(
   title = repo_names_to_titles(all_repo_names),
   sloccount = get_sloccounts(all_repo_names),
   n_stars = count_ns_stargazers(all_repo_names),
+  n_downloads_per_month = repo_names_to_downloads_per_month(all_repo_names),
+  n_total_downloads = repo_names_to_total_downloads(all_repo_names),
   stringsAsFactors = FALSE
 )
+
+names(df)
 
 total_sloccount <- sum(df$sloccount)
 richels_sloccount <- sum(df[df$repo_name %in% richel_repo_names, ]$sloccount)
@@ -164,6 +216,8 @@ df <- rbind(
       ]
     ),
     n_stars = NA,
+    n_downloads_per_month = NA,
+    n_total_downloads = NA,
     stringsAsFactors = FALSE
   )
 )
@@ -181,15 +235,28 @@ df <- rbind(
       ]
     ),
     n_stars = NA,
+    n_downloads_per_month = NA,
+    n_total_downloads = NA,
     stringsAsFactors = FALSE
   )
 )
 
+# Sort on name
+df <- df[ order(df$repo_name), ]
+
 df_table <- df
-df_table <- dplyr::rename(df_table, name = repo_name)
+df_table <- dplyr::rename(
+  df_table,
+  name = repo_name,
+  ns = n_stars,
+  ndm = n_downloads_per_month,
+  ndt = n_total_downloads
+)
 df_table$name <- basename(df_table$name)
 # Remove the examples
 df_table <- df_table[stringr::str_detect(df_table$name, "example_", negate = TRUE), ]
+# Sort by name
+df_table <- df_table[ order(df_table$name), ]
 
 print(
   knitr::kable(
@@ -207,7 +274,9 @@ print(
     align = c(
       "p{0.0\\textwidth}",
       "p{0.2\\textwidth}",
-      "p{0.5\\textwidth}",
+      "p{0.4\\textwidth}",
+      "p{0.1\\textwidth}",
+      "p{0.05\\textwidth}",
       "p{0.1\\textwidth}",
       "p{0.1\\textwidth}"
     )
