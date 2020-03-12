@@ -1,3 +1,6 @@
+library(ggplot2)
+library(xtable)
+
 richel_repo_names <- c(
   "richelbilderbeek/aureole",
   "ropensci/babette",
@@ -35,7 +38,6 @@ all_repo_names <- c(
 )
 
 repo_name_to_title <- function(repo_name) {
-  message(repo_name)
   if (repo_name == "CompEvol/beast2") {
     return("BEAST2")
   }
@@ -54,13 +56,6 @@ repo_names_to_titles <- function(repo_names) {
   }
   titles
 }
-
-df <- data.frame(
-  repo_name = all_repo_names,
-  title = repo_names_to_titles(all_repo_names),
-  sloccount = NA,
-  stringsAsFactors = FALSE
-)
 
 # Count non-whitespace lines
 count_lines <- function(filenames) {
@@ -97,94 +92,15 @@ collect_r_filenames <- function(project_name) {
   filenames
 }
 
-for (i in seq_along(all_repo_names)) {
-  project_name <- basename(df$repo_name[i])
-
-  filenames <- collect_r_filenames(project_name = project_name)
-
-  df$sloccount[i] <- count_lines(filenames)
+get_sloccounts <- function(repo_names) {
+  sloccounts <- rep(NA, length(repo_names))
+  for (i in seq_along(repo_names)) {
+    project_name <- basename(repo_names[i])
+    filenames <- collect_r_filenames(project_name = project_name)
+    sloccounts[i] <- count_lines(filenames)
+  }
+  as.integer(sloccounts)
 }
-
-
-total_sloccount <- sum(df$sloccount)
-
-richels_sloccount <- sum(df[df$repo_name %in% richel_repo_names, ]$sloccount)
-
-# aggregate pirouette examples
-df <- rbind(
-  df,
-    data.frame(
-    repo_name = "richelbilderbeek/pirouette_examples",
-    title = "All pirouette examples",
-    sloccount = sum(
-      df$sloccount[
-        stringr::str_detect(
-          string = as.character(df$repo_name),
-          pattern = "pirouette_example_.*"
-        )
-      ]
-    ),
-    stringsAsFactors = FALSE
-  )
-)
-df <- rbind(
-  df,
-    data.frame(
-    repo_name = "richelbilderbeek/babette_examples",
-    title = "All babette examples",
-    sloccount = sum(
-      df$sloccount[
-        stringr::str_detect(
-          string = as.character(df$repo_name),
-          pattern = "babette_example_.*"
-        )
-      ]
-    ),
-    stringsAsFactors = FALSE
-  )
-)
-
-# Sort
-df <- df[ order(df$repo_name, decreasing = TRUE), ]
-
-df <- df[df$sloccount > 1000,]
-df <- df[ order(df$sloccount, decreasing = TRUE), ]
-library(ggplot2)
-
-# Horizontal bar
-ggplot(
-  data = df,
-  aes(x = basename(repo_name), y = sloccount / 1000)
-) + geom_col(position = "identity", color = "black", fill = "white") + coord_flip() +
-  theme(legend.position="none") +
-  scale_y_continuous(name ="SLOCcount (x1000)", breaks = seq(0, 150, 5)) +
-  scale_x_discrete(name ="Repository name") +
-  ggsave("~/sloccount.png", width = 7, height = 7)
-
-
-# Stacked bar
-ggplot2::ggplot(
-  data = df,
-  aes(x = "", y = sloccount, fill = name)
-) + geom_col(position = "stack", color = "black")
-
-ggplot2::ggplot(
-  data = df,
-  aes(x = "", y = sloccount, fill = name)
-) + facet_grid(. ~ name) +
-  geom_bar(stat = "identity", color = "black") + geom_text(aes(label = name))
-
-
-
-
-
-
-# GET /repos/:owner/:repo/stargazers
-#x <- curl::curl_fetch_memory("https://github.com?GET=repos/:ropensci/:beautier/stargazers")
-# curl::curl(
-#   url = "https://github.com",
-#   handle = "GET /repos/:ropensci/:beautier/stargazers"
-# )
 
 # One
 count_n_stargazers <- function(
@@ -205,76 +121,87 @@ count_ns_stargazers <- function(
         basename(repos[i])
     )
   }
-  n
+  as.integer(n)
 }
 
-df <- data.frame(repo = all_repo_names, n_stars = count_ns_stargazers(all_repo_names))
-df[ rev(order(df$n_stars)), ]
-#                                     repo n_stars
-# 57                       CompEvol/beast2     134
-# 64                    klausVigo/phangorn     110
-# 2                       ropensci/babette      20
-# 14                     ropensci/beautier       6
-# 56                     ropensci/tracerer       5
-# 13                     ropensci/beastier       5
-# 17              richelbilderbeek/mcbette       4
-# 61                      thijsjanzen/nLTT       3
-# 58                      rsetienne/DAISIE       3
-# 20            richelbilderbeek/pirouette       3
-# 54                richelbilderbeek/razzo       2
-# 19            richelbilderbeek/peregrine       2
-# 63                         rsetienne/PBD       1
-# 62                   thijsjanzen/nodeSub       1
-# 60                            Giappo/mbd       1
-# 59                         rsetienne/DDD       1
-# 18                     ropensci/mauricer       1
-# 16             richelbilderbeek/daisieme       1
-# 55                richelbilderbeek/ribir       0
-# 53                richelbilderbeek/raket       0
-# 52                richelbilderbeek/raztr       0
-# 51                richelbilderbeek/raztr       0
-# 50 richelbilderbeek/pirouette_example_30       0
-# 49 richelbilderbeek/pirouette_example_29       0
-# 48 richelbilderbeek/pirouette_example_28       0
-# 47 richelbilderbeek/pirouette_example_27       0
-# 46 richelbilderbeek/pirouette_example_26       0
-# 45 richelbilderbeek/pirouette_example_25       0
-# 44 richelbilderbeek/pirouette_example_24       0
-# 43 richelbilderbeek/pirouette_example_23       0
-# 42 richelbilderbeek/pirouette_example_22       0
-# 41 richelbilderbeek/pirouette_example_21       0
-# 40 richelbilderbeek/pirouette_example_20       0
-# 39 richelbilderbeek/pirouette_example_19       0
-# 38 richelbilderbeek/pirouette_example_18       0
-# 37 richelbilderbeek/pirouette_example_17       0
-# 36 richelbilderbeek/pirouette_example_16       0
-# 35 richelbilderbeek/pirouette_example_15       0
-# 34 richelbilderbeek/pirouette_example_14       0
-# 33 richelbilderbeek/pirouette_example_13       0
-# 32 richelbilderbeek/pirouette_example_12       0
-# 31 richelbilderbeek/pirouette_example_11       0
-# 30 richelbilderbeek/pirouette_example_10       0
-# 29  richelbilderbeek/pirouette_example_9       0
-# 28  richelbilderbeek/pirouette_example_8       0
-# 27  richelbilderbeek/pirouette_example_7       0
-# 26  richelbilderbeek/pirouette_example_6       0
-# 25  richelbilderbeek/pirouette_example_5       0
-# 24  richelbilderbeek/pirouette_example_4       0
-# 23  richelbilderbeek/pirouette_example_3       0
-# 22  richelbilderbeek/pirouette_example_2       0
-# 21  richelbilderbeek/pirouette_example_1       0
-# 15              richelbilderbeek/becosys       0
-# 12             richelbilderbeek/babetter       0
-# 11    richelbilderbeek/babette_example_9       0
-# 10    richelbilderbeek/babette_example_8       0
-# 9     richelbilderbeek/babette_example_7       0
-# 8     richelbilderbeek/babette_example_6       0
-# 7     richelbilderbeek/babette_example_5       0
-# 6     richelbilderbeek/babette_example_4       0
-# 5     richelbilderbeek/babette_example_3       0
-# 4     richelbilderbeek/babette_example_2       0
-# 3     richelbilderbeek/babette_example_1       0
-# 1               richelbilderbeek/aureole       0
+df <- data.frame(
+  repo_name = all_repo_names,
+  title = repo_names_to_titles(all_repo_names),
+  sloccount = get_sloccounts(all_repo_names),
+  n_stars = count_ns_stargazers(all_repo_names),
+  stringsAsFactors = FALSE
+)
+
+total_sloccount <- sum(df$sloccount)
+richels_sloccount <- sum(df[df$repo_name %in% richel_repo_names, ]$sloccount)
+
+# aggregate pirouette examples
+df <- rbind(
+  df,
+    data.frame(
+    repo_name = "richelbilderbeek/pirouette_examples",
+    title = "All pirouette examples",
+    sloccount = sum(
+      df$sloccount[
+        stringr::str_detect(
+          string = as.character(df$repo_name),
+          pattern = "pirouette_example_.*"
+        )
+      ]
+    ),
+    n_stars = NA,
+    stringsAsFactors = FALSE
+  )
+)
+df <- rbind(
+  df,
+    data.frame(
+    repo_name = "richelbilderbeek/babette_examples",
+    title = "All babette examples",
+    sloccount = sum(
+      df$sloccount[
+        stringr::str_detect(
+          string = as.character(df$repo_name),
+          pattern = "babette_example_.*"
+        )
+      ]
+    ),
+    n_stars = NA,
+    stringsAsFactors = FALSE
+  )
+)
+
+df_table <- df
+df_table <- dplyr::rename(df_table, name = repo_name)
+df_table$name <- basename(df_table$name)
+# Remove the examples
+df_table <- df_table[stringr::str_detect(df_table$name, "example_", negate = TRUE), ]
+
+print(
+  xtable(
+    df_table,
+    type = "latex",
+    caption = "Repository features",
+    label = "tab:repos",
+    align = c(
+      "p{0.0\\textwidth}",
+      "p{0.2\\textwidth}",
+      "p{0.5\\textwidth}",
+      "p{0.1\\textwidth}",
+      "p{0.1\\textwidth}"
+    )
+  ),
+  file = "repos.tex",
+  include.rownames = FALSE
+)
 
 
-df
+# Horizontal bar
+ggplot(
+  data = df[df$sloccount > 1000,],
+  aes(x = basename(repo_name), y = sloccount / 1000)
+) + geom_col(position = "identity", color = "black", fill = "white") + coord_flip() +
+  theme(legend.position="none") +
+  scale_y_continuous(name ="SLOCcount (x1000)", breaks = seq(0, 150, 5)) +
+  scale_x_discrete(name ="Repository name") +
+  ggsave("sloccount.png", width = 7, height = 7)
