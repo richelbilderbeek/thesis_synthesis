@@ -34,8 +34,33 @@ all_repo_names <- c(
   "klausVigo/phangorn"
 )
 
-project_names <- basename(all_repo_names)
-project_names <- sort(project_names)
+repo_name_to_title <- function(repo_name) {
+  message(repo_name)
+  if (repo_name == "CompEvol/beast2") {
+    return("BEAST2")
+  }
+  if (repo_name == "rsetienne/PBD") {
+    d <- desc::description$new(file.path("../PBD/PBD/DESCRIPTION"))
+    return(d$get_field("Title"))
+  }
+  d <- desc::description$new(file.path("..", basename(repo_name), "DESCRIPTION"))
+  return(d$get_field("Title"))
+}
+
+repo_names_to_titles <- function(repo_names) {
+  titles <- rep(NA, length(repo_names))
+  for (i in seq_along(repo_names)) {
+    titles[i] <- repo_name_to_title(repo_names[i])
+  }
+  titles
+}
+
+df <- data.frame(
+  repo_name = all_repo_names,
+  title = repo_names_to_titles(all_repo_names),
+  sloccount = NA,
+  stringsAsFactors = FALSE
+)
 
 # Count non-whitespace lines
 count_lines <- function(filenames) {
@@ -72,10 +97,8 @@ collect_r_filenames <- function(project_name) {
   filenames
 }
 
-df <- data.frame(name = project_names, sloccount = NA)
-
-for (i in seq_along(project_names)) {
-  project_name <- df$name[i]
+for (i in seq_along(all_repo_names)) {
+  project_name <- basename(df$repo_name[i])
 
   filenames <- collect_r_filenames(project_name = project_name)
 
@@ -85,62 +108,57 @@ for (i in seq_along(project_names)) {
 
 total_sloccount <- sum(df$sloccount)
 
-richels_sloccount <- sum(df[df$name %in% richel_project_names, ]$sloccount)
-
+richels_sloccount <- sum(df[df$repo_name %in% richel_repo_names, ]$sloccount)
 
 # aggregate pirouette examples
 df <- rbind(
   df,
     data.frame(
-    name = "pirouette_examples",
+    repo_name = "richelbilderbeek/pirouette_examples",
+    title = "All pirouette examples",
     sloccount = sum(
       df$sloccount[
         stringr::str_detect(
-          string = as.character(df$name),
+          string = as.character(df$repo_name),
           pattern = "pirouette_example_.*"
         )
       ]
-    )
+    ),
+    stringsAsFactors = FALSE
   )
 )
 df <- rbind(
   df,
     data.frame(
-    name = "babette_examples",
+    repo_name = "richelbilderbeek/babette_examples",
+    title = "All babette examples",
     sloccount = sum(
       df$sloccount[
         stringr::str_detect(
-          string = as.character(df$name),
+          string = as.character(df$repo_name),
           pattern = "babette_example_.*"
         )
       ]
-    )
+    ),
+    stringsAsFactors = FALSE
   )
 )
 
 # Sort
-df$name <- as.character(df$name)
-df <- df[ order(df$name, decreasing = TRUE), ]
+df <- df[ order(df$repo_name, decreasing = TRUE), ]
 
 df <- df[df$sloccount > 1000,]
+df <- df[ order(df$sloccount, decreasing = TRUE), ]
 library(ggplot2)
-
-
-# Pie
-ggplot(
-  data = df,
-  aes(x = "", y = sloccount, fill = name)
-) + geom_bar(stat = "identity", color = "black") +
-  coord_polar("y", start = 0) +
-  geom_text(aes(label = name))
 
 # Horizontal bar
 ggplot(
   data = df,
-  aes(x = name, y = sloccount / 1000, fill = name)
-) + geom_col(position = "identity", color = "black") + coord_flip() +
+  aes(x = basename(repo_name), y = sloccount / 1000)
+) + geom_col(position = "identity", color = "black", fill = "white") + coord_flip() +
   theme(legend.position="none") +
-  scale_y_continuous(name ="SLOCcount (x1000)", breaks = seq(0, 150, 10)) +
+  scale_y_continuous(name ="SLOCcount (x1000)", breaks = seq(0, 150, 5)) +
+  scale_x_discrete(name ="Repository name") +
   ggsave("~/sloccount.png", width = 7, height = 7)
 
 

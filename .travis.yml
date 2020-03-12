@@ -4,6 +4,73 @@ language: R
 cache: packages
 
 script:
+  # Clone all repos
+  - cd ..
+  - git clone richelbilderbeek/aureole
+  - git clone ropensci/babette
+  - git clone richelbilderbeek/babette_example_1
+  - git clone richelbilderbeek/babette_example_2
+  - git clone richelbilderbeek/babette_example_3
+  - git clone richelbilderbeek/babette_example_4
+  - git clone richelbilderbeek/babette_example_5
+  - git clone richelbilderbeek/babette_example_6
+  - git clone richelbilderbeek/babette_example_7
+  - git clone richelbilderbeek/babette_example_8
+  - git clone richelbilderbeek/babette_example_9
+  - git clone richelbilderbeek/babetter
+  - git clone ropensci/beastier
+  - git clone ropensci/beautier
+  - git clone richelbilderbeek/becosys
+  - git clone richelbilderbeek/daisieme
+  - git clone richelbilderbeek/mcbette
+  - git clone ropensci/mauricer
+  - git clone richelbilderbeek/peregrine
+  - git clone richelbilderbeek/pirouette
+  - git clone richelbilderbeek/pirouette_example_1
+  - git clone richelbilderbeek/pirouette_example_2
+  - git clone richelbilderbeek/pirouette_example_3
+  - git clone richelbilderbeek/pirouette_example_4
+  - git clone richelbilderbeek/pirouette_example_5
+  - git clone richelbilderbeek/pirouette_example_6
+  - git clone richelbilderbeek/pirouette_example_7
+  - git clone richelbilderbeek/pirouette_example_8
+  - git clone richelbilderbeek/pirouette_example_9
+  - git clone richelbilderbeek/pirouette_example_10
+  - git clone richelbilderbeek/pirouette_example_11
+  - git clone richelbilderbeek/pirouette_example_12
+  - git clone richelbilderbeek/pirouette_example_13
+  - git clone richelbilderbeek/pirouette_example_14
+  - git clone richelbilderbeek/pirouette_example_15
+  - git clone richelbilderbeek/pirouette_example_16
+  - git clone richelbilderbeek/pirouette_example_17
+  - git clone richelbilderbeek/pirouette_example_18
+  - git clone richelbilderbeek/pirouette_example_19
+  - git clone richelbilderbeek/pirouette_example_20
+  - git clone richelbilderbeek/pirouette_example_21
+  - git clone richelbilderbeek/pirouette_example_22
+  - git clone richelbilderbeek/pirouette_example_23
+  - git clone richelbilderbeek/pirouette_example_24
+  - git clone richelbilderbeek/pirouette_example_25
+  - git clone richelbilderbeek/pirouette_example_26
+  - git clone richelbilderbeek/pirouette_example_27
+  - git clone richelbilderbeek/pirouette_example_28
+  - git clone richelbilderbeek/pirouette_example_29
+  - git clone richelbilderbeek/pirouette_example_30
+  - git clone richelbilderbeek/raztr
+  - git clone richelbilderbeek/raztr
+  - git clone richelbilderbeek/raket
+  - git clone richelbilderbeek/razzo
+  - git clone richelbilderbeek/ribir
+  - git clone ropensci/tracerer
+  - git clone CompEvol/beast2
+  - git clone rsetienne/DAISIE
+  - git clone rsetienne/DDD
+  - git clone Giappo/mbd
+  - git clone thijsjanzen/nLTT
+  - git clone thijsjanzen/nodeSub
+  - git clone rsetienne/PBD
+  - git clone klausVigo/phangorn
+  - cd thesis_synthesis
   - Rscript create_figures.R
   - spelling::spell_check_files("synthesis.tex")
 
