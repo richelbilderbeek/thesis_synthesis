@@ -212,3 +212,40 @@ ggplot(
   scale_y_continuous(name ="SLOCcount (x1000)", breaks = seq(0, 150, 5)) +
   scale_x_discrete(name ="Repository name") +
   ggsave("sloccount.png", width = 7, height = 7)
+
+
+
+# Create the README table
+df_readme <- data.frame(name = all_repo_names, stringsAsFactors = FALSE)
+df_readme
+
+
+create_readme_line <- function(
+  owner = "richelbilderbeek",
+  repo_name = "aureole"
+) {
+  travis_build_status <- paste0("[![Build Status](https://travis-ci.org/", owner, "/", repo_name, ".svg?branch=master)](https://travis-ci.org/", owner, "/", repo_name, ")")
+  codecov <- paste0("[![codecov.io](https://codecov.io/github/", owner, "/", repo_name, "/coverage.svg?branch=master)](https://codecov.io/github/", owner, "/", repo_name, "/branch/master)")
+  downloads <- paste0("[![](http://cranlogs.r-pkg.org/badges/babette)](https://CRAN.R-project.org/package=babette)")
+  total_downloads <- paste0("[![](http://cranlogs.r-pkg.org/badges/grand-total/", repo_name, ")](https://CRAN.R-project.org/package=", repo_name, ")")
+  paste(c(repo_name, travis_build_status, codecov, downloads, total_downloads), collapse = " | ")
+}
+
+create_readme_lines <- function(repo_names) {
+  text <- rep(NA, length(repo_names))
+  for (i in seq_along(repo_names)) {
+    repo_name <- repo_names[i]
+    owner = dirname(repo_name)
+    text[i] <- create_readme_line(owner = owner, repo_name = basename(repo_name))
+  }
+  header <- c(
+    "name|build status|codecov|downloads|total downloads",
+    "----|------------|-------|---------|---------------"
+  )
+  c(
+    header,
+    text
+  )
+}
+cat(create_readme_lines(all_repo_names), sep = "\n", file = "repos.md")
+

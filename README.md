@@ -7,3 +7,5 @@ develop|[![Build Status](https://travis-ci.org/richelbilderbeek/thesis_synthesis
 
 My thesis' Synthesis.
 
+See [repos.md](repos.md) for the repo statuses.
+
