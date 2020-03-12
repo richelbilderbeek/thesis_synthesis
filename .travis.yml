@@ -3,7 +3,14 @@
 language: R
 cache: packages
 
-script:
+r_packages:
+  - ggplot2
+  - xtable
+
+r_github_packages:
+  - ropensci/spelling
+
+after_script:
   # Clone all repos
   - cd ..
   - git clone https://github.com/richelbilderbeek/aureole
