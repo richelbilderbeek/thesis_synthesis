@@ -102,12 +102,26 @@ get_sloccounts <- function(repo_names) {
   as.integer(sloccounts)
 }
 
-# One
+# Count the number of stars for one repo
+# Will return NA if there have been too many GitHub API requests
 count_n_stargazers <- function(
   owner = "ropensci",
   repo = "beautier"
 ) {
-  length(gh::gh("GET /repos/:owner/:repo/stargazers", owner = owner, repo = repo, .limit = 1000))
+  n <- NA
+  tryCatch({
+      n <- length(
+        gh::gh(
+          "GET /repos/:owner/:repo/stargazers",
+          owner = owner,
+          repo = repo,
+          .limit = 1000
+        )
+      )
+    },
+    error = function(e) {} # nolint indeed ignore
+  )
+  n
 }
 
 # Many repos
