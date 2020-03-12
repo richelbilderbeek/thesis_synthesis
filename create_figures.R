@@ -240,7 +240,7 @@ create_readme_line <- function(
 ) {
   travis_build_status <- paste0("[![Build Status](https://travis-ci.org/", owner, "/", repo_name, ".svg?branch=master)](https://travis-ci.org/", owner, "/", repo_name, ")")
   codecov <- paste0("[![codecov.io](https://codecov.io/github/", owner, "/", repo_name, "/coverage.svg?branch=master)](https://codecov.io/github/", owner, "/", repo_name, "/branch/master)")
-  downloads <- paste0("[![](http://cranlogs.r-pkg.org/badges/babette)](https://CRAN.R-project.org/package=babette)")
+  downloads <- paste0("[![](http://cranlogs.r-pkg.org/badges/", repo_name, ")](https://CRAN.R-project.org/package=", repo_name, ")")
   total_downloads <- paste0("[![](http://cranlogs.r-pkg.org/badges/grand-total/", repo_name, ")](https://CRAN.R-project.org/package=", repo_name, ")")
   paste(c(repo_name, travis_build_status, codecov, downloads, total_downloads), collapse = " | ")
 }
