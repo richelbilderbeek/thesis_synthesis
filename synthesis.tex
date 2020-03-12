@@ -28,16 +28,17 @@ I show the number of
 I maintain, the packages I contributed to, as well as BEAST2.
 BEAST2, which is the foundation of the work in this thesis, 
 has the most lines of code, above 110k. After that comes
-'beautier' (27k lines), phangorn (18k), 'pirouette' (17k), 'daisieme' (14k), 
-DAISIE (12k) and 'razzo' (8k). 
-'beautier' is an R package that creates a BEAST2 
+\verb;beautier; (27k lines), \verb;phangorn; (18k), 
+\verb;pirouette; (17k), \verb;daisieme; (14k), 
+\verb;DAISIE; (12k) and \verb;razzo; (8k). 
+\verb;beautier; is an R package that creates a BEAST2 
 input file, and part of the \verb;babette; package suite, as described
 in chapter 2. 
-'phangorn' is a general phylogentics package of which I fixed some bugs.
-'pirouette' is the package described in chapter 3. 
-'daisieme' is part of a project that did not reach fruition (see below).
-DAISIE is an R package developed in our group, with 42 citations on
-Google scholar. 'razzo' is the package described in chapter 4.
+\verb;phangorn; is a general phylogentics package of which I fixed some bugs.
+\verb;pirouette; is the package described in chapter 3. 
+\verb;daisieme; is part of a project that did not reach fruition (see below).
+\verb;DAISIE; is an R package developed in our group, with 42 citations on
+Google scholar. \verb;razzo; is the package described in chapter 4.
 Summing up the packages of which I wrote most of the code, results
 in 90k lines of code. This number of lines is still less than 
 BEAST2 (with 110k), except all written in half the time. Also note that
@@ -46,7 +47,7 @@ BEAST2 has 26 collaborators, of which 6 contributed more than 1k lines of code.
 \begin{figure}[]
   \includegraphics[width=0.8\textwidth]{sloccount.png}
   \caption{
-    SLOCcount 
+    SLOCcount: number of (non-empty) source code lines per repository 
   }
   \label{fig:sloccount}
 \end{figure}
@@ -65,8 +66,8 @@ A CI service is automatically activated when a developer puts a new version of
 his/her software online. The CI service will create a virtual computer from
 scratch, build the software and run it. These virtual computers can
 be of multiple operating systems. 
-Where BEAST2 and DAISIE are tested on Linux only, 'beautier',
-'pirouette' and my other R packages are tested to run under MacOS and
+Where BEAST2 and \verb;DAISIE; are tested on Linux only, \verb;beautier;,
+\verb;pirouette; and my other R packages are tested to run under MacOS and
 Windows as well, assuring users of the three major operating systems
 can actually run these.
 
@@ -77,20 +78,25 @@ that is actually executed by tests.
 Writing tests is fundamental for writing quality code.
 These tests are usually run by the CI, each time a developer puts a new version
 online. Ideally all lines of code are tested. 
-My software has a 100\% code coverage, compared to BEAST2, with an 
-unknown/undisclosed code coverage, 'phangorn' with approximately
-70\%, followed by DAISIE with approximately 60\%.
+As can be seen in table \ref{tab:repos}, all \verb;babette; packages
+have a 100\% code coverage, compared to BEAST2, with an 
+unknown/undisclosed code coverage, \verb;phangorn; with approximately
+70\%, followed by \verb;DAISIE; with approximately 60\% 
+\footnote{
+  I used the code coverage of the 'geodynamics' branch, 
+  as 'master' has 0 \%
+}.
 
 Another measure to improve code quality is peer review. Similar to
 academic manuscripts, also code can be peer reviewed. 
 For R code, rOpenSci is the non-profit organisation that does so.
 Note that a prerequisite for a code review by rOpenSci is that code coverage is 100\%,
-therefore 'phangorn' and 'DAISIE' are not yet eligible.
+therefore \verb;phangorn; and \verb;DAISIE; are not yet eligible.
 The five packages of the \verb;babette; package suite have been reviewed, 
-where 'mcbette' is under review. 
+where \verb;mcbette; is under review. 
 The full process of the review of \verb;babette; took approximately one year,
 as this is done in the free time of both me and the reviewers.
-Mostly due to this, there has not been time yet to have 'pirouette' reviewed.
+Mostly due to this, there has not been time yet to have \verb;pirouette; reviewed.
 
 \paragraph{Relevance}
 
@@ -100,9 +106,9 @@ still irrelevant.
 
 One way to estimate the relevance is to measure the number of CRAN downloads
 per month. CRAN is a central repository for R packages, which keeps
-track of the number of downloads. By this measure, in March 20202,
-'phangorn' is most relevant, with 15k downloads per months, followed 
-by 'beautier' (922), 'tracerer' (829) and DAISIE (740). Because BEAST2
+track of the number of downloads. By this measure, as of March 9th 20202,
+\verb;phangorn; is most relevant, with 15k downloads per months, followed 
+by \verb;beautier; (975), \verb;tracerer; (849) and \verb;DAISIE; (736). Because BEAST2
 is not an R package, it is absent from this list.
 
 Another way to estimate the relevance is to measure the number of stars
@@ -111,10 +117,10 @@ and that allows to develop software collaboratively.
 Logged-in users (there are 40 million) can give a star to a project
 to indicate his/her appreciation of the project.
 Going through the projects in \ref{fig:sloccount}, most stars
-are given to BEAST2: 134 (at 2020-03-09), followed
-by 'phangorn' with 110 and \verb;babette; with 20 stars.
-After 'beautier' (6), tracerer (5), beastier (5)
-and mcbette (4), 'pirouette', DAISIE and nLTT only have 3 stars.
+are given, as of March 9th 2020, to BEAST2, with 134, followed
+by \verb;phangorn; with 110 and \verb;babette; with 20 stars.
+After \verb;beautier; (6), \verb;tracerer; (5), \verb;beastier; (5)
+and \verb;mcbette; (4), \verb;pirouette;, \verb;DAISIE; and \verb;nLTT; have 3 stars.
 For repositories with 3 or less stars, these stars are given by
 the developers themselves and thus less relevant to indicate
 the relevance of a project.
@@ -137,28 +143,28 @@ These guidelines exist to guarantee a minimum level of quality.
 The most important guideline when submitting an R package to CRAN,
 is that all its dependencies are on CRAN. Figure \ref{fig:dependencies}
 shows the dependencies of the R packages used in this thesis, showing that
-three out of the five babette packages depend on the two others. 
+three out of the five \verb;babette; packages depend on the two others. 
 It would take one full year to get all packages on CRAN.
 
 \begin{figure}[]
   \includegraphics[width=0.6\textwidth]{dependencies.png}
   \caption{
     Minimal spanning tree of the dependencies of the R packages used in this
-    thesis. Arrows go from the package depended upon (at the tail), 
-    to the package that depends on the package (at the head). For example,
-    beastier depends on beautier. The packages on CRAN are beautier,
-    tracerer, beastier, mauricer and babette.
+    thesis. Arrows go from a package (at the tail), 
+    to the package it depends on (at the head). For example,
+    'beastier' depends on 'beautier'. The packages on CRAN are 'beautier',
+    'tracerer', 'beastier', 'mauricer' and 'babette'.
   }
   \label{fig:dependencies}
 \end{figure}
 
 A consequence of taking care for the user, is that there should be
 a version of each of the packages that always works, regardless of ongoing
-development. If a top-level package, say 'razzo' requires some different 
-functionality of a bottom-level package such as 'beautier', there
-can be a cascade of new versions: a change in 'beautier' 
+development. If a top-level package, say \verb;razzo; requires some different 
+functionality of a bottom-level package such as \verb;beautier;, there
+can be a cascade of new versions: a change in \verb;beautier; 
 can cause a change in any of the packages that depend on its.
-Due to this, 'beautier' (as of 2020-03-10) is at its fourth CRAN version.
+Due to this, \verb;beautier; (as of 2020-03-10) is at its fourth CRAN version.
 
 Users expect that the code they use has a certain quality,
 as they will depend on it. There are multiple ones to verify
@@ -167,8 +173,8 @@ dynamic images shown in the README of a project that
 signal a certain aspect of it, such as build status and code coverage.
 Additionally, code should be open, so the style and extent of tests can
 be verified. An example of a package that can improve in this
-regard is the 'ape' package (\cite{ape}), which contains
-a class for a phylogeny. It is possible to read the R code 'ape' consists
+regard is the \verb;ape; package (\cite{ape}), which contains
+a class for a phylogeny. It is possible to read the R code \verb;ape; consists
 of from a CRAN submission. Except for that, there is no way to 
 verify the code quality and development process: code is added by sending 
 it per email, there is no website (such as
@@ -183,12 +189,12 @@ User group meetings and tutorials (articles and videos) are better at
 learning how to use a package. BEAST2 has a user group meeting every half year,
 as well as dozens of tutorials (of which three I wrote). Specific to
 the R programming language is the vignette, a kind of documentation that
-can run a package's code. Counting the vignettes, 'beautier' has four, 
-phangorn has two, 'pirouette' has six, 'daisieme' has one (but well,
-it is unfinished), DAISIE has two and 'razzo' has two. 
-The complete babette package suite has
+can run a package's code. Counting the vignettes, \verb;beautier; has four, 
+\verb;phangorn; has two, \verb;pirouette; has six, \verb;daisieme; has one (but well,
+it is unfinished), \verb;DAISIE; has two and \verb;razzo; has two. 
+The complete \verb;babette; package suite has
 22 vignettes.
-Additionally, for \verb;babette;, and 'pirouette' there are some video's to
+Additionally, for \verb;babette;, and \verb;pirouette; there are some video's to
 be downloaded or to be streamed from YouTube.
 
 Users also expect a community: a place where they can ask questions,
@@ -201,23 +207,20 @@ document that describes how to contribute, having specified a software license,
 as well as having template texts for Issues (among others, bug reports
 and feature request) and pull request (which is a code contribution of any type).
 Of these seven standard, BEAST2 has three, 
-'beautier' all, phangorn has two, 'pirouette' and 'daisieme' have all,
-DAISIE has two and 'razzo' has six.
+\verb;beautier; all, \verb;phangorn; has two, \verb;pirouette; and \verb;daisieme; have all,
+\verb;DAISIE; has two and \verb;razzo; has six.
 
 \paragraph{Academic relevance}
 
 An academic way to estimate the relevance of a piece of software,
 is to count the number of citations the article describing it
 has received. As of 2020-03-09 these are from Google Scholar:
-BEAST2 \cite{bouckaert2014beast} has 3010 citations,
-followed by phangorn \cite{schliep2011phangorn} with 1247,
-DAISIE \cite{valente2014effects} has 44, 
-nLTT \cite{janzen2015approximate} has 17,
-and babette \cite{bilderbeek2018babette} has 2. 
+BEAST2 (\cite{bouckaert2014beast}) has 3010 citations,
+followed by \verb;phangorn; (\cite{schliep2011phangorn}) with 1247,
+\verb;DAISIE; (\cite{valente2014effects}) has 44, 
+\verb;nLTT; (\cite{janzen2015approximate}) has 17,
+and \verb;babette; (\cite{bilderbeek2018babette}) has 2. 
 Of course, older articles have had more time to accumulate citations.
-
-I dare conclude that my software is of exemplary quality. I predict this
-will be most effective for science as a whole, at the cost of (only) my own time.
 
 \subsection{Scientific method}
 
@@ -243,7 +246,7 @@ something significant is found.
 \begin{figure}[]
   \includegraphics[width=0.8\textwidth]{munafo2017manifesto_fig_1.jpg}
   \caption{
-    SLOCcount 
+    Threats to reproducible science, from \cite{munafo2017manifesto}
   }
   \label{fig:manifesto}
 \end{figure}
@@ -271,12 +274,12 @@ before the experiment is finished.
 The work in this thesis adheres to many of the best 
 practices for reproducible research (\cite{munafo2017manifesto}).
 All papers in this thesis are Open Access.
-The 'razzo' experiment was not pre-registered, as a lighter variant was used:
+The \verb;razzo; experiment was not pre-registered, as a lighter variant was used:
 code, manuscript and communication went via GitHub. GitHub is a website that
 allows people to collaborate. A feature of GitHub is that it keeps track
-of all changes. For 'razzo', the hypotheses and methods were written
+of all changes. For \verb;razzo;, the hypotheses and methods were written
 before the first results, and it is possible to verify this.
-Also the pilot runs of 'razzo' can be found, as well as their results.
+Also the pilot runs of \verb;razzo; can be found, as well as their results.
 By being completely open, we protected ourselves against HARKing and
 p-hacking.
 
@@ -314,7 +317,7 @@ Now that we have an idea of practical work and scientific methods underlying
 this thesis, we can take a look what this thesis has contributed to
 increase our biological knowledge. 
 
-\paragraph{babette}
+\paragraph{'babette'}
 
 Because \verb;babette; calls BEAST2, it is tempting to say that \verb;babette;
 is just as relevant to the field of biology as BEAST2. 
@@ -326,32 +329,32 @@ can do this from one R script.
 
 \paragraph{'pirouette'} 
 
-The contribution of 'pirouette' to the field of biology, 
+The contribution of \verb;pirouette; to the field of biology, 
 is that it gives a thoroughly-tested framework to answer
 basic phylogenetic questions. The supplementary materials 
-of 'pirouette' shows plenty of examples that can evolve into
+of \verb;pirouette; shows plenty of examples that can evolve into
 a full academic paper when investigated more systematically.
 
-What was unpredicted about 'pirouette', is that it can be used to 
+What was unpredicted about \verb;pirouette;, is that it can be used to 
 investigate different models of how an alignment is simulated
 from a phylogeny. This was an unexpected example of the flexibility of 
-pirouette and I wonder where 'pirouette' will be used for in the future.
+\verb;pirouette; and I wonder where \verb;pirouette; will be used for in the future.
 
 \paragraph{'razzo'} 
 
-The contribution of 'razzo' to the field of biology
+The contribution of \verb;razzo; to the field of biology
 are the introduction of a new tree model, 
 and measuring the error we make in our phylogenetic inference when
 nature follows a non-standard speciation model.
 This non-standard speciation model is the multiple-birth death (MBD) tree model,
 which is the first tree model that allows multiple speciation events to occur 
 at exactly the same time.
-The predictions of 'razzo' have always been straightforward:
+The predictions of \verb;razzo; have always been straightforward:
 the stronger a tree violates the assumptions of a standard tree
 prior, the bigger the inference error made by that prior.
 What is unknown, is the extent to which this happens.
 
-There are some assumptions that 'razzo' makes that can be discussed,
+There are some assumptions that \verb;razzo; makes that can be discussed,
 which are the assumptions of the MBD tree model and the assumptions
 made by the experimental setup.
 Where the MBD model assumes speciation events can co-occur at exactly
@@ -365,7 +368,7 @@ facets. We did not investigate how common the MBD model is in nature,
 instead the model is loosely based on one example, which is the 
 adaptive radiation in Lake Tanganyika. However,
 in the cases that MBD has a good fit with the data, 
-the 'razzo' experiment can show us the error we make in our phylogentic 
+the \verb;razzo; experiment can show us the error we make in our phylogentic 
 inference. From this, we may either rest assured that our inference is good 
 enough, or that we really need to add MBD to the set of standard models.
 
@@ -376,8 +379,8 @@ it into this booklet. I will discuss these here.
 
 \paragraph{'raket'} 
 
-'raket' is the ancestor of all chapters in this thesis.
-It would do the same thing as 'razzo', but for a different non-standard 
+\verb;raket; is the ancestor of all chapters in this thesis.
+It would do the same thing as \verb;razzo;, but for a different non-standard 
 speciation model. This non-standard speciation model is
 called the Protracted Birth-Death model (PBD), in which speciation
 takes time: after a speciation event, one of the two new species is not
@@ -385,33 +388,33 @@ directly recognized as such. Up until these are recognized, the number
 of species that are present (when looking back from the future) 
 is underestimated.
 
-The 'raket' experiment would have one extra step compared to the 'razzo'
-experiment: in the 'raket' experiment, an \emph{incipient} species tree
+The \verb;raket; experiment would have one extra step compared to the \verb;razzo;
+experiment: in the \verb;raket; experiment, an \emph{incipient} species tree
 would be simulated first, after which a species tree would be created
 from it. The way to do so, is by picking incipient species to represent
 a species.
 
-One novel finding of the 'raket' experiment, is the way that picking
+One novel finding of the \verb;raket; experiment, is the way that picking
 which incipient represents which species is not always intuitive.
 From the three existing methods to do so, two new methods have been added. 
 
-'raket' would be another illustration of the inference error we make
+\verb;raket; would be another illustration of the inference error we make
 if nature follows a non-standard speciation model. The same remarks as
-'razzo' apply here as well: it is unknown how well nature fits the PBD model.
-In the cases that nature fits the PBD model well, then 'raket' would have
+\verb;razzo; apply here as well: it is unknown how well nature fits the PBD model.
+In the cases that nature fits the PBD model well, then \verb;raket; would have
 been able to show the extent of the inference error.
 
-\paragraph{'daisieme'} 
+\paragraph{'daisieme'}
 
-'daisieme' (pronounce 'day-sham', similar to the French 'deuxième') is
-a project based on DAISIE (\cite{daisie}). DAISIE is an island model,
+\verb;daisieme; (pronounce 'day-sham', similar to the French 'deuxième') is
+a project based on \verb;DAISIE; (\cite{daisie}). \verb;DAISIE; is an island model,
 which allows to estimate speciation, extinction and migration rates 
-from one or more phylogenies. Island models, such as DAISIE, typically
-assume that the species on the mainland are fixed. 'daisieme' would
+from one or more phylogenies. Island models, such as \verb;DAISIE;, typically
+assume that the species on the mainland are fixed. \verb;daisieme; would
 investigate this assumption, by simulating phylogenies that do have
 mainland extinctions.
 
-'daisieme' would show the extent of the inference error we make,
+\verb;daisieme; would show the extent of the inference error we make,
 for varying levels of mainland extinction. We can assume that the inference 
 error increases for increasing levels of mainland extinction, but the extent
 of this error will remain unknown for now.
@@ -450,7 +453,7 @@ that I can say yes.
 
 \paragraph{Things that I will avoid} 
 
-Already early in my PhD, the first ideas of 'raket'/'razzo' were
+Already early in my PhD, the first ideas of \verb;raket;/\verb;razzo; were
 taking shape. Back then, I suggested not to pursue this line of
 research, because it would be clunky and inelegant. Clunky, because
 already one Bayesian phylogentic analysis takes hours. Unelegant,
@@ -459,18 +462,18 @@ parameters. Nowadays, I still agree on this.
 I think, similar to other people in phylogenetics,
 that I should have pursued more light-weight and elegant experiments.
 
-When developing a pipeline such as 'pirouette', there is a tension
+When developing a pipeline such as \verb;pirouette;, there is a tension
 between (1) adding a new feature, (2) publish. The basic
 and minimal pipeline is the setup without candidate models and without
 twinning. Already this subset of the pipeline allows one to 
 measure the inference error we make in phylogenetic inference.
-The 'raket' paper, that was pre-registered two years ago, used only
+The \verb;raket; paper, that was pre-registered two years ago, used only
 that part of the pipeline. Instead of investigating this minimal
 pipeline and publish the findings, features were added instead.
 These features are the use candidate models and the addition
 of a twin pipeline. 
 
-The first extra 'pirouette' feature, which is the use of candidate models,
+The first extra \verb;pirouette; feature, which is the use of candidate models,
 has, in my opinion, caused mostly harm to my PhD, without adding
 enough value. The main reason for this harm, is that the use of candidate
 models can only run under Linux and Mac, due to a feature of BEAST2 that
@@ -478,13 +481,13 @@ only works under those two operating systems. Most desktop users, however,
 use the Windows operating system, so I needed to take this into account.
 Due to this, I had to write code that I would never run myself, a weird
 situation. Also, my co-author Giovanni Laudanno, who uses Windows, had
-a hard time to contribute to the 'pirouette' code. 
+a hard time to contribute to the \verb;pirouette; code. 
 
-The second extra 'pirouette' feature, which is the use of a twin pipeline,
+The second extra \verb;pirouette; feature, which is the use of a twin pipeline,
 was, in my opinion, unwarranted to add before the publication of the minimal
 pipeline. There is some benefit to use twinning, but I think 
 it would have been superior to show this benefit by reproducing an earlier
-'pirouette' publication with this new feature.
+\verb;pirouette; publication with this new feature.
 
 \subsection{Future work}
 
@@ -496,7 +499,7 @@ make the MBD tree model part of the set of standard models.
 
 \paragraph{Apply 'pirouette' on standard speciation models} 
 
-The goal of 'pirouette' is the measure the inference error
+The goal of \verb;pirouette; is the measure the inference error
 when a phylogeny is created by a non-standard tree model,
 but a standard tree prior is used in the inference. There are,
 however, only a couple of studies that investigate the
@@ -520,15 +523,15 @@ when assuming a Yule model, this would give a sense of scale.
 It may even be that there is no reason to use BD at all,
 because the inference error is too little to warrant using it!
 Whatever this error, I would be curious to see how it compares
-to the errors found in 'razzo'. 
+to the errors found in \verb;razzo;. 
 
 I understand why this has not been researched: it takes too long
-and there is little glory in finding this out. With 'pirouette', however,
+and there is little glory in finding this out. With \verb;pirouette;, however,
 it should at least be easy to setup these experiments.
 
 \paragraph{Apply 'pirouette' on multiple novel speciation models} 
 
-The inference error that 'razzo' measures, is caused by the
+The inference error that \verb;razzo; measures, is caused by the
 mismatch of using an MBD tree, yet assuming a BD tree model.
 It is easy to do this for any non-standard tree model, such as
 PBD, but also a time or diversity dependent tree model. Using
@@ -537,13 +540,13 @@ and when we cannot use our standard tree priors.
 
 \paragraph{Add MBD tree prior to BEAST2}
 
-In 'razzo', we measure the inference error we make, when we generate
+In \verb;razzo;, we measure the inference error we make, when we generate
 and MBD tree and assume a BD tree model in our inference. What we
 do not know is the inference error would we assume an MBD tree model in
 our inference. Being able to use an MBD tree prior would give another
 baseline error: the inference error when nature follows MBD and we
 correctly assume this. To do so, the MBD tree prior must be added to BEAST2, 
-\verb;babette; should be able to use it, then a study similar to 'razzo' can be done.
+\verb;babette; should be able to use it, then a study similar to \verb;razzo; can be done.
 
 \subsection{Final words}
 
