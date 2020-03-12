@@ -1,8 +1,8 @@
 #!/bin/bash
-pdflatex header.tex --shell-escape
-bibtex header.aux
-pdflatex header.tex --shell-escape
-pdflatex header.tex --shell-escape
+pdflatex header --shell-escape
+bibtex header
+pdflatex header --shell-escape
+pdflatex header --shell-escape
 rm header.aux
 rm header.bbl
 rm header.blg
