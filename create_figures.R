@@ -178,6 +178,13 @@ df_table$name <- basename(df_table$name)
 df_table <- df_table[stringr::str_detect(df_table$name, "example_", negate = TRUE), ]
 
 print(
+  knitr::kable(
+    df_table,
+    row.names = FALSE
+  )
+)
+
+print(
   xtable(
     df_table,
     type = "latex",
