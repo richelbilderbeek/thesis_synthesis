@@ -119,18 +119,6 @@ For repositories with 3 or less stars, these stars are given by
 the developers themselves and thus less relevant to indicate
 the relevance of a project.
 
-\paragraph{Academic relevance}
-
-An academic way to estimate the relevance of a piece of software,
-is to count the number of citations the article describing it
-has received. As of 2020-03-09 these are from Google Scholar:
-BEAST2 \cite{bouckaert2014beast} has 3010 citations,
-followed by phangorn \cite{schliep2011phangorn} with 1247,
-DAISIE \cite{valente2014effects} has 44, 
-nLTT \cite{janzen2015approximate} has 17,
-and babette \cite{bilderbeek2018babette} has 2. 
-Of course, older articles have had more time to accumulate citations.
-
 \paragraph{Community}
 
 A time-consuming aspects of developing software is taking care of its
@@ -216,6 +204,18 @@ Of these seven standard, BEAST2 has three,
 'beautier' all, phangorn has two, 'pirouette' and 'daisieme' have all,
 DAISIE has two and 'razzo' has six.
 
+\paragraph{Academic relevance}
+
+An academic way to estimate the relevance of a piece of software,
+is to count the number of citations the article describing it
+has received. As of 2020-03-09 these are from Google Scholar:
+BEAST2 \cite{bouckaert2014beast} has 3010 citations,
+followed by phangorn \cite{schliep2011phangorn} with 1247,
+DAISIE \cite{valente2014effects} has 44, 
+nLTT \cite{janzen2015approximate} has 17,
+and babette \cite{bilderbeek2018babette} has 2. 
+Of course, older articles have had more time to accumulate citations.
+
 I dare conclude that my software is of exemplary quality. I predict this
 will be most effective for science as a whole, at the cost of (only) my own time.
 
@@ -279,6 +279,34 @@ before the first results, and it is possible to verify this.
 Also the pilot runs of 'razzo' can be found, as well as their results.
 By being completely open, we protected ourselves against HARKing and
 p-hacking.
+
+\paragraph{Open Science}
+
+Where reproducible research is an important facet of the scientific method,
+there is the Open Science movement that goes further: not only
+should there be openness in the research conducted,
+also the scientific article, resulting data, and software should be open.
+In that way, the scientific knowledge is accessible to all (among other,
+the tax payer) and can be reproduced by all. 
+
+All the academic articles have been put on bioRxiv before publication.
+bioRxiv is a pre-print server, meaning that it stores academic manuscripts
+before these appear in print. Although the manuscript may not have been
+peer-reviewed, it is allowed to upload the version after peer-review,
+without the journal-specific layout. In that way, anyone can download
+my academic articles. Additionally, the GitHub repository that hosts
+the article is also accessible.
+
+All the academic articles I published are Open Access. 
+In this way, anyone can download them without any paywall.
+
+All the academic articles are created by free and open source software ('FOSS').
+Which means that anyone, regardless of operating system, can
+read these without any financial cost.
+
+All the experiments are performed with FOSS only.
+Which means that anyone, regardless of operating system, can
+reproduce these, without any financial cost.
 
 \subsection{Biology}
 
@@ -527,22 +555,26 @@ and bask in the resulting glory.
 
 \section{Supplementary materials}
 
-\subsection{Repository info}
+In these supplementary materials, I show the raw data referred to in the main
+text.
 
 \input{repos.tex}
 
-\subsection{Altmetrics}
+\fbox{
+  \begin{minipage}{\textwidth}
+  \subsection{Altmetrics}
 
-\itemize{
- \item 60,000 GitHub commits, 1.1k repositories, 421 stars, 242 followers
- \item 133 YouTube videos, 68 subscribers, 11k views
- \item Supervised 2 MSc students
- \item Supervised 6 BSc students
- \item Supervised 7 interns from secondary schools
- \item Organised 172 social events
- \item Since Jan 2017, presented 20 times at TECE
- \item Publish 5 packages on CRAN
- \item Passed rOpenSci peer-review for 4 R packages
- \item Taught +220 evenings about programming
+  \itemize{
+   \item 60,000 GitHub commits, 1.1k repositories, 421 stars, 242 followers
+   \item 133 YouTube videos, 68 subscribers, 11k views
+   \item Supervised 2 MSc students
+   \item Supervised 6 BSc students
+   \item Supervised 7 interns from secondary schools
+   \item Organised 172 social events
+   \item Since Jan 2017, presented 20 times at TECE
+   \item Publish 5 packages on CRAN
+   \item Passed rOpenSci peer-review for 4 R packages
+   \item Taught +220 evenings about programming
+  }
+  \end{minipage} 
 }
-

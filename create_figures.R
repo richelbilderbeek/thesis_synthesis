@@ -312,7 +312,17 @@ print(
   xtable(
     df_table,
     type = "latex",
-    caption = "Repository features",
+    caption = paste0(
+      "Repository features. ",
+      "name: the CRAN package name. ",
+      "title: the R package title, as taken from the DESCRIPTION file",
+      "sloccount: the number of (non-empty) lines of code.",
+      "cc: code coverage, as a percentage, ",
+      "where 100 percent denotes that all code is covered by tests. ",
+      "ns: number of stars on GitHub. ",
+      "ndm: number of CRAN downloads per month",
+      "ndt: total number of CRAN downloads"
+    ),
     label = "tab:repos",
     align = c(
       "p{0.0\\textwidth}",
