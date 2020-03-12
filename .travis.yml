@@ -4,5 +4,6 @@ language: R
 cache: packages
 
 script:
+  - Rscript create_figures.R
   - spelling::spell_check_files("synthesis.tex")
 
