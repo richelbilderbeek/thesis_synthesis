@@ -227,8 +227,6 @@ ggplot(
   scale_x_discrete(name ="Repository name") +
   ggsave("sloccount.png", width = 7, height = 7)
 
-
-
 # Create the README table
 df_readme <- data.frame(name = all_repo_names, stringsAsFactors = FALSE)
 df_readme
