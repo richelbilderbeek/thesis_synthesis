@@ -82,4 +82,6 @@ after_script:
   - cd thesis_synthesis
   - Rscript create_figures.R
   - Rscript -e 'spelling::spell_check_files("synthesis.tex", ignore = readLines("inst/WORDLIST"))'
+  # Same, but gives an error if spellcheck fails
+  - spelling_errors=$(Rscript -e 'spelling::spell_check_files("introduction.tex", ignore = readLines("inst/WORDLIST"))') ; [ "$spelling_errors" == "No spelling errors found." ]
 
