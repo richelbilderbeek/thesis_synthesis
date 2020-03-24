@@ -190,12 +190,12 @@ learning how to use a package. BEAST2 has a user group meeting every half year,
 as well as dozens of tutorials (three of which I wrote). Specific to
 the R programming language is the vignette, a kind of documentation that
 can run a package's code. Counting the vignettes, \verb;beautier; has four, 
-\verb;phangorn; has two, \verb;pirouette; has six, \verb;daisieme; has one (but well,
-it is unfinished), \verb;DAISIE; has two and \verb;razzo; has two. 
+\verb;phangorn; has two, \verb;pirouette; has six, \verb;daisieme; has 
+one (but well, it is unfinished), \verb;DAISIE; has two and \verb;razzo; has two. 
 The complete \verb;babette; package suite has
 22 vignettes.
-Additionally, for \verb;babette;, and \verb;pirouette; there are some video's to
-be downloaded or to be streamed from YouTube.
+Additionally, for \verb;babette;, and \verb;pirouette; there are nine 
+video's to be downloaded or to be streamed from YouTube.
 
 Users also expect a community: a place where they can ask questions,
 submit bug reports and contribute new code. GitHub has a checklist of
@@ -206,7 +206,7 @@ having a README file, having a Code of Conduct, having a
 document that describes how to contribute, having specified a software license, 
 as well as having template texts for Issues (among others, bug reports
 and feature request) and pull request (which is a code contribution of any type).
-Of these seven standard, BEAST2 has three, 
+Of these seven standards, BEAST2 has three, 
 \verb;beautier; all, \verb;phangorn; has two, \verb;pirouette; and \verb;daisieme; have all,
 \verb;DAISIE; has two and \verb;razzo; has six.
 
@@ -436,18 +436,72 @@ which allows to estimate speciation, extinction and migration rates
 from one or more phylogenies. Island models, such as \verb;DAISIE;, typically
 assume that the species on the mainland are fixed. \verb;daisieme; would
 investigate this assumption, by simulating phylogenies that do have
-mainland extinctions, estimating DAISIE parameters and comparing these parameters and predictions based on these parameters (such as the number of species and the number of colonizations) to the true parameter values and the true dynamics (of e.g. number of species and number of colonizations).
+mainland extinctions, estimating DAISIE parameters and comparing these 
+parameters and predictions based on these parameters (such as the 
+number of species and the number of colonizations) to the true parameter 
+values and the true dynamics (of e.g. number of species and number of 
+colonizations).
 
-\verb;daisieme; would show the extent of the inference error we make,
+One of the predictions of \verb;daisieme; is that the immigration rate
+will be overestimated when mainland extinction takes place, that is, species
+colonize an island earlier than actually true. 
+This prediction is caused by the estimated colonization time 
+of species that we do not know the actual colonization time of.
+For such a species, the colonization time is estimated with help
+from (part of) the DNA sequences taken from all extant species.
+For the island species of unknown immigration time, the closest mainland
+relative is chosen. Of these two species, the time of their speciation
+event is estimated. This time is used as the earliest time a colonization
+event could have taken place, which is the best estimate possible
+given the amount of information available. 
+In figure \ref{fig:daisieme_example} this is depicted as the vertical
+dashed line at the right. However, when the direct
+mainland ancestor has gone extinct, the \emph{ancestor} of the extinct
+mainland species will be compared to the island species, resulting in
+an earlier estimated colonization time. 
+In figure \ref{fig:daisieme_example} this is depicted as the vertical
+dashed line at the left.
+If colonization times are estimated to happen earlier, 
+migration rate should go up.
+
+\begin{figure}[]
+  \includegraphics[width=0.8\textwidth]{daisieme_overestimation_example.jpg}
+  \caption{
+    daisieme example where we expect an overestimation in the migration rate.
+    The top half shows the phylogeny of the mainland, which has tree
+    species: A, B and an unlabelled one. The cross at the end of the
+    yellow/mainland species A denotes its extinction. The vertical dashed
+    red light directly left of it denotes the colonization of species A
+    of the island, resulting in the green/island species A. The green/insland
+    species A*, however, depicts the estimated colonization time,
+    which is at the moment that mainland species A and B are formed.
+  }
+  \label{fig:daisieme_example}
+\end{figure}
+
+\verb;daisieme; shows the extent of the inference error we make,
 for varying levels of mainland extinction. We can assume that the inference 
 error increases for increasing levels of mainland extinction, but the extent
-of this error will remain unknown for now.
+of this error will remain unknown for now. 
 
-\rampal{
-  Also, here you can add some of the figures you produced, 
-  explaining how mainland extinction changes the way DAISIE would 
-  interpret the data.
-}
+One preliminary result, however, is shown in figure \ref{fig:daisieme_results}.
+This result points in the same way as the predictions, but a more thorough
+investigation is needed before drawing conclusions.
+
+\begin{figure}[]
+  \includegraphics[width=0.8\textwidth]{daisieme_migration4.png}
+  \caption{
+    Preliminary daisieme result: the estimated migration rate (vertical
+    axis) for different mainland extinction rates (horizontal axis).
+    Orange dots show the estimated mainland extinction rates
+    in an ideal situation, which is when all immigration times are known.
+    Blue dots show the estimated mainland extinction rates 
+    when the time of immigration needs to be estimated.
+    The dotted lines show the result of a linear fit.
+    The thick horizontal orange line shows the actual migration rate.
+  }
+  \label{fig:daisieme_results}
+\end{figure}
 
 \subsection{Reflection}
 
@@ -577,12 +631,6 @@ our inference. Being able to use an MBD tree prior would give another
 baseline error: the inference error when nature follows MBD and we
 correctly assume this. To do so, the MBD tree prior must be added to BEAST2, 
 \verb;babette; should be able to use it, then a study similar to \verb;razzo; can be done.
-
-\subsection{Final words}
-
-I think the work in this thesis is the work I should have been doing.
-I hope that many phylogeneticists will happily build upon my work
-and bask in the resulting glory.
 
 \references{synthesis}
 
