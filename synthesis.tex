@@ -32,11 +32,11 @@ has the most lines of code, above 110k. After that comes
 \verb;pirouette; (17k), \verb;daisieme; (14k), 
 \verb;DAISIE; (12k) and \verb;razzo; (8k). 
 \verb;beautier; is an R package that creates a BEAST2 
-input file, and part of the \verb;babette; package suite, as described
+input file, and is part of the \verb;babette; package suite, as described
 in chapter 2. 
-\verb;phangorn; is a general phylogentics package of which I fixed some bugs.
+\verb;phangorn; is a general phylogenetics package of which I fixed some bugs.
 \verb;pirouette; is the package described in chapter 3. 
-\verb;daisieme; is part of a project that did not reach fruition (see below).
+\verb;daisieme; is part of a project that did not reach full fruition yet (see below).
 \verb;DAISIE; is an R package developed in our group, with 42 citations on
 Google scholar. \verb;razzo; is the package described in chapter 4.
 Summing up the packages of which I wrote most of the code, results
@@ -107,7 +107,7 @@ still irrelevant.
 One way to estimate the relevance is to measure the number of CRAN downloads
 per month. CRAN is a central repository for R packages, which keeps
 track of the number of downloads. By this measure, as of March 9th 20202,
-\verb;phangorn; is most relevant, with 15k downloads per months, followed 
+\verb;phangorn; is most relevant, with 15k downloads per month, followed 
 by \verb;beautier; (975), \verb;tracerer; (849) and \verb;DAISIE; (736). Because BEAST2
 is not an R package, it is absent from this list.
 
@@ -167,7 +167,7 @@ can cause a change in any of the packages that depend on its.
 Due to this, \verb;beautier; (as of 2020-03-10) is at its fourth CRAN version.
 
 Users expect that the code they use has a certain quality,
-as they will depend on it. There are multiple ones to verify
+as they will depend on it. There are multiple ways to verify
 code quality. A popular feature is the use of status badges: 
 dynamic images shown in the README of a project that 
 signal a certain aspect of it, such as build status and code coverage.
@@ -179,15 +179,15 @@ of from a CRAN submission. Except for that, there is no way to
 verify the code quality and development process: code is added by sending 
 it per email, there is no website (such as
 GitHub) that tracks the development of the code and the tests are 
-unavailable (although they are rumored to exists, according to personal 
-communication with Emmanuel Paradis). 
+unavailable (although they apparently exist, according to personal 
+communication with the maintainer of the package, Emmanuel Paradis). 
 
 Users also need documentation to learn to use a new package.
 One piece of documentation is an academic paper describing the functionality
 of a package. Such a paper is useful for getting the idea behind a package.
-User group meetings and tutorials (articles and videos) are better at
+User group meetings and tutorials (articles and videos) are better for
 learning how to use a package. BEAST2 has a user group meeting every half year,
-as well as dozens of tutorials (of which three I wrote). Specific to
+as well as dozens of tutorials (three of which I wrote). Specific to
 the R programming language is the vignette, a kind of documentation that
 can run a package's code. Counting the vignettes, \verb;beautier; has four, 
 \verb;phangorn; has two, \verb;pirouette; has six, \verb;daisieme; has one (but well,
@@ -222,6 +222,8 @@ followed by \verb;phangorn; (\cite{schliep2011phangorn}) with 1247,
 and \verb;babette; (\cite{bilderbeek2018babette}) has 2. 
 Of course, older articles have had more time to accumulate citations.
 
+\rampal{There are several papers that use new elements of DAISIE; these should be added. Also, DAISIE was only launched with the Ecology Letters paper}
+
 \subsection{Scientific method}
 
 Now that we have an idea of the amount of practical work underlying
@@ -252,15 +254,15 @@ something significant is found.
 \end{figure}
 
 The drawback of HARKing and p-hacking is that it leads to
-irreproducible science. From HARKing, hypotheses that we not under
+irreproducible science. From HARKing, hypotheses that were not under
 investigation, suddenly get some credibility, obtained from a
 random/no effect. p-value hacking gives more credibility 
 to an experimental variable having an effect than warranted.
-It is estimated that 85% of the publications in biomedical sciences
+It is estimated that 85\% of the publications in biomedical sciences
 is a waste of resources (\cite{chalmers2009avoidable}) (but note
 that this estimation is based on a logic reasoning, instead
 of empirical data), although the situation has improved 
-since (\cite{macleod2014biomedical}). 
+since \citet{macleod2014biomedical}. 
 
 \paragraph{Assuring reproduction in practice}
 
@@ -335,15 +337,15 @@ basic phylogenetic questions. The supplementary materials
 of \verb;pirouette; shows plenty of examples that can evolve into
 a full academic paper when investigated more systematically.
 
-What was unpredicted about \verb;pirouette;, is that it can be used to 
+Interestingly \verb;pirouette; can also be used to 
 investigate different models of how an alignment is simulated
-from a phylogeny. This was an unexpected example of the flexibility of 
-\verb;pirouette; and I wonder where \verb;pirouette; will be used for in the future.
+from a phylogeny, even though pirouette was not originally designed to do so. This was a fortunate example of the flexibility of 
+\verb;pirouette; and begs the question what \verb;pirouette; will be most used for in the future.
 
 \paragraph{'razzo'} 
 
 The contribution of \verb;razzo; to the field of biology
-are the introduction of a new tree model, 
+is the introduction of a new tree model, 
 and measuring the error we make in our phylogenetic inference when
 nature follows a non-standard speciation model.
 This non-standard speciation model is the multiple-birth death (MBD) tree model,
@@ -368,9 +370,10 @@ facets. We did not investigate how common the MBD model is in nature,
 instead the model is loosely based on one example, which is the 
 adaptive radiation in Lake Tanganyika. However,
 in the cases that MBD has a good fit with the data, 
-the \verb;razzo; experiment can show us the error we make in our phylogentic 
+the \verb;razzo; experiment can show us the error we make in our phylogenetic 
 inference. From this, we may either rest assured that our inference is good 
 enough, or that we really need to add MBD to the set of standard models.
+\rampal{I have not read the razzo ms yet, but I think that you should say a bit more about how relevant the model is. In the razzo ms you should review the literature on the species pump which is the idea underlying MBD and empirical support for it. Then you can refer back to it here.} 
 
 \subsection{Cancelled projects}
 
@@ -398,6 +401,8 @@ One novel finding of the \verb;raket; experiment, is the way that picking
 which incipient represents which species is not always intuitive.
 From the three existing methods to do so, two new methods have been added. 
 
+\rampal{You already have quite some text about these two new methods. Can you use this to extend the discussion here a bit more?}
+
 \verb;raket; would be another illustration of the inference error we make
 if nature follows a non-standard speciation model. The same remarks as
 \verb;razzo; apply here as well: it is unknown how well nature fits the PBD model.
@@ -412,23 +417,25 @@ which allows to estimate speciation, extinction and migration rates
 from one or more phylogenies. Island models, such as \verb;DAISIE;, typically
 assume that the species on the mainland are fixed. \verb;daisieme; would
 investigate this assumption, by simulating phylogenies that do have
-mainland extinctions.
+mainland extinctions, estimating DAISIE parameters and comparing these parameters and predictions based on these parameters (such as the number of species and the number of colonizations) to the true parameter values and the true dynamics (of e.g. number of species and number of colonizations).
 
 \verb;daisieme; would show the extent of the inference error we make,
 for varying levels of mainland extinction. We can assume that the inference 
 error increases for increasing levels of mainland extinction, but the extent
 of this error will remain unknown for now.
 
+\rampal{Also, here you can add some of the figures you produced, explaining how mainland extinction changes the way DAISIE would interpret the data.}
+
 \subsection{Reflection}
 
-When looking back at my PhD, I see some things that I will
-do again, that I will avoid in the future, and some future work.
+When looking back at my PhD trajectory, I see some things that I will
+do again, things that I will avoid in the future, and some future work.
 
 \paragraph{Things that I will do again} 
 
 It was inevitable that I would write exemplary software. Writing such
 software takes years, if not decades, of learning. 
-Already a dozen of years before my PhD, I started reading the literature
+Already a dozen of years before I started my PhD, I was reading the literature
 regarding software development. One could argue that, would I have done 
 a worse job, I would have published more academic papers. I even agree
 on that! But for science as a whole, I think what I did is the superior
@@ -438,8 +445,8 @@ care about his/her users, as I can easily envision the frustration
 this will cause.
 
 Following the best practices for reproducible science is something
-I learned during my PhD and I will definitely continue (and improve)
-doing so. I think it was in my second year as a PhD, 
+I learned during my PhD trajectory and I will definitely continue (and improve)
+doing so. I think it was in my second year as a PhD student, 
 when I noticed the question 'Do I believe this?' would pop up
 after a scientific talk. The answer, usually, was a no. First I thought
 that HARKing and p-hacking were even part of how science works
@@ -453,7 +460,7 @@ that I can say yes.
 
 \paragraph{Things that I will avoid} 
 
-Already early in my PhD, the first ideas of \verb;raket;/\verb;razzo; were
+Already early in my PhD work, the first ideas of \verb;raket;/\verb;razzo; were
 taking shape. Back then, I suggested not to pursue this line of
 research, because it would be clunky and inelegant. Clunky, because
 already one Bayesian phylogentic analysis takes hours. Unelegant,
@@ -474,7 +481,7 @@ These features are the use candidate models and the addition
 of a twin pipeline. 
 
 The first extra \verb;pirouette; feature, which is the use of candidate models,
-has, in my opinion, caused mostly harm to my PhD, without adding
+has, in my opinion, caused mostly harm to the progress in my PhD work, without adding
 enough value. The main reason for this harm, is that the use of candidate
 models can only run under Linux and Mac, due to a feature of BEAST2 that
 only works under those two operating systems. Most desktop users, however,
