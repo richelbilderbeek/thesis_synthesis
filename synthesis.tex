@@ -210,20 +210,6 @@ Of these seven standard, BEAST2 has three,
 \verb;beautier; all, \verb;phangorn; has two, \verb;pirouette; and \verb;daisieme; have all,
 \verb;DAISIE; has two and \verb;razzo; has six.
 
-\paragraph{Academic relevance}
-
-An academic way to estimate the relevance of a piece of software,
-is to count the number of citations the article describing it
-has received. As of 2020-03-09 these are from Google Scholar:
-BEAST2 (\cite{bouckaert2014beast}) has 3010 citations,
-followed by \verb;phangorn; (\cite{schliep2011phangorn}) with 1247,
-\verb;DAISIE; (\cite{valente2014effects}) has 44, 
-\verb;nLTT; (\cite{janzen2015approximate}) has 17,
-and \verb;babette; (\cite{bilderbeek2018babette}) has 2. 
-Of course, older articles have had more time to accumulate citations.
-
-\rampal{There are several papers that use new elements of DAISIE; these should be added. Also, DAISIE was only launched with the Ecology Letters paper}
-
 \subsection{Scientific method}
 
 Now that we have an idea of the amount of practical work underlying
@@ -373,7 +359,15 @@ in the cases that MBD has a good fit with the data,
 the \verb;razzo; experiment can show us the error we make in our phylogenetic 
 inference. From this, we may either rest assured that our inference is good 
 enough, or that we really need to add MBD to the set of standard models.
-\rampal{I have not read the razzo ms yet, but I think that you should say a bit more about how relevant the model is. In the razzo ms you should review the literature on the species pump which is the idea underlying MBD and empirical support for it. Then you can refer back to it here.} 
+
+\rampal{
+  I have not read the razzo ms yet, but I think that you should say 
+  a bit more about how relevant the model is. In the razzo ms you 
+  should review the literature on the species pump which is the idea 
+  underlying MBD and empirical support for it. Then you can refer back 
+  to it here.
+}
+ 
 
 \subsection{Cancelled projects}
 
@@ -397,11 +391,36 @@ would be simulated first, after which a species tree would be created
 from it. The way to do so, is by picking incipient species to represent
 a species.
 
-One novel finding of the \verb;raket; experiment, is the way that picking
-which incipient represents which species is not always intuitive.
-From the three existing methods to do so, two new methods have been added. 
+One novel finding of the \verb;raket; experiment, is that the sampling
+method to create a species tree is in some cases counterintuitive.
+The sampling method selects which incipient species 
+will represent a (good) species. For example, one can select the
+incipient species that speciated most recently to represent its
+species. One would expect that sampling by this method would
+always result in a phylogeny that has the shortest branch lengths.
+This assumption is false, however, if there is a certain type of
+paraphyly, as shown in figure \ref{fig:pbd_sampling}. 
+As I was interested in obtaining phylogenies with the
+shortest branch lengths, the sampling method to obtain 
+these was added. A similar story holds for sampling the oldest 
+incipient species, which does not always result in a phylogeny with
+longest branches. Dueo to this, 
+from the three existing sampling methods, 
+two new methods have been added.
 
-\rampal{You already have quite some text about these two new methods. Can you use this to extend the discussion here a bit more?}
+\begin{figure}[]
+  \includegraphics[width=0.8\textwidth]{raket_sampling_methods_modified.png}
+  \caption{
+    Sampling of PBD trees. At the top-left is an incipient species
+    trees, that shows four different incipient species. Species
+    'S2-2-2' and 'S2-2-3' are two different species, yet not recognized
+    as such. The red edges denote a species still being an incipient
+    species. The other four phylogenies are the result of four sampling
+    methods. The sampling methods is shown above each phylogeny,
+    as well as the sum of the branch lengths.
+  }
+  \label{fig:pbd_sampling}
+\end{figure}
 
 \verb;raket; would be another illustration of the inference error we make
 if nature follows a non-standard speciation model. The same remarks as
@@ -424,7 +443,11 @@ for varying levels of mainland extinction. We can assume that the inference
 error increases for increasing levels of mainland extinction, but the extent
 of this error will remain unknown for now.
 
-\rampal{Also, here you can add some of the figures you produced, explaining how mainland extinction changes the way DAISIE would interpret the data.}
+\rampal{
+  Also, here you can add some of the figures you produced, 
+  explaining how mainland extinction changes the way DAISIE would 
+  interpret the data.
+}
 
 \subsection{Reflection}
 
