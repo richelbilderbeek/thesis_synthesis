@@ -327,7 +327,7 @@ print(
     align = c(
       "p{0.0\\textwidth}",
       "p{0.11\\textwidth}",
-      "p{0.4\\textwidth}",
+      "p{0.3\\textwidth}",
       "p{0.1\\textwidth}",
       "p{0.05\\textwidth}",
       "p{0.05\\textwidth}",
