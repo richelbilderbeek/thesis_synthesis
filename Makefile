@@ -1,2 +1,6 @@
-all:
-	echo "Stub"
+all: synthesis.pdf
+
+synthesis.pdf: *.tex
+	./create.sh
+	./view.sh
+

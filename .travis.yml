@@ -1,5 +1,3 @@
-# R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
-
 language: R
 cache: packages
 
@@ -11,6 +9,9 @@ r_packages:
 
 r_github_packages:
   - ropensci/spelling
+
+script:
+  - make
 
 after_script:
   # Clone all repos
